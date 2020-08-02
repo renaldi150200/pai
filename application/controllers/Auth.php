@@ -21,9 +21,9 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data['title'] = 'Login Page';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/login');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/landing_header', $data);
+            $this->load->view('landing/login');
+            $this->load->view('templates/landing_footer');
         } else {
             $this->_login();
         }
@@ -126,13 +126,13 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'User Registration';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/landing_header');
+            $this->load->view('landing/sign-up');
+            $this->load->view('templates/landing_script');
         } else {
             $this->Mahasiswa_model->input_data();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-            redirect('auth');
+            redirect('landing/login');
         }
     }
 
@@ -141,8 +141,13 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
-        redirect('auth');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Kamu Berhasil Keluar !</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>');
+        redirect('landing/login');
     }
     public function logoutAnggota()
     {

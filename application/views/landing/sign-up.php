@@ -9,24 +9,44 @@
                    <p>Fill out the form below to sign up for Tivo. Already signed up? Then just <a class="white" href="<?=base_url('landing/login');?>">Log In</a></p>
                     <!-- Sign Up Form -->
                     <div class="form-container">
-                        <form id="signUpForm" data-toggle="validator" data-focus="false">
-                            <div class="form-group">
-                                <input type="email" class="form-control-input" id="semail" required>
-                                <label class="label-control" for="semail">Email</label>
-                                <div class="help-block with-errors"></div>
+                        <form method="post" action="<?=base_url('auth/registration');?>">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="sname" name="name"  value="<?=set_value('name')?>">
+                            <label class="label-control" for="sname">Name</label>
+                            <div class="help-block with-errors"></div>
+                            <?=form_error('name', '<small class="text-danger pl-3">', '</small>');?>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control-input" id="semail" name="email"  value="<?=set_value('email')?>">
+                            <label class="label-control" for="semail">Email</label>
+                            <div class="help-block with-errors"></div>
+                            <?=form_error('email', '<small class="text-danger pl-3">', '</small>');?>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="spassword" name="password1"  value="<?=set_value('password1')?>">
+                            <label class="label-control" for="spassword">Password</label>
+                            <div class="help-block with-errors"></div>
+                            <?=form_error('password1', '<small class="text-danger pl-3">', '</small>');?>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="spassword" name="password2">
+                            <label class="label-control" for="spassword">Repeat Password</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="row mb-5">
+                                <div class="col-4 mt-1"><span class="font-weight-bold">Daftar Sebagai</span> </div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                    <select class="custom-select " id="role_nama" name="role_nama">
+                                        <option value="pelajar">Pelajar</option>
+                                        <option value="pengajar">Pengajar</option>
+                                    </select>
+                                        <?=form_error('role_nama', '<small class="text-danger pl-3">', '</small>');?>
+                                    </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" id="sname" required>
-                                <label class="label-control" for="sname">Name</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" id="spassword" required>
-                                <label class="label-control" for="spassword">Password</label>
-                                <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group checkbox">
-                                <input type="checkbox" id="sterms" value="Agreed-to-Terms" required>I agree with Tivo's <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms Conditions</a>
+                                <input type="checkbox" id="sterms" value="Agreed-to-Terms" name="">I agree with Tivo's <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms Conditions</a>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
