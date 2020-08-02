@@ -16,17 +16,30 @@
 
     <?php
 $role_id = $this->session->userdata('role_id');
+$nim = $this->session->userdata('nim');
 
-$queryUser = "SELECT *
-                                                                                    FROM `user`
-                                                                                    WHERE `role_id` = $role_id";
-$User = $this->db->query($queryUser)->row_array();
-$queryMenu = "SELECT `user_menu`.`id_menu`, `menu`
+$queryDataAnggota = "SELECT COUNT(nim) FROM `anggota` WHERE nim = $nim";
+if ($queryDataAnggota > 0) {
+    $queryUser = "SELECT *
+    FROM `anggota`
+    WHERE `role_id` = $role_id";
+    $User = $this->db->query($queryUser)->row_array();
+    $queryMenu = "SELECT `user_menu`.`id_menu`, `menu`
+    FROM `user_menu` INNER JOIN `user_access_menu`
+    ON `user_menu`.`id_menu` = `user_access_menu`.`menu_id`
+    WHERE `user_access_menu`.`role_id` = $role_id
+    ORDER BY `user_access_menu`.`menu_id` ASC ";
+} else {
+
+    $queryUser = "SELECT * FROM `user`WHERE `role_id` = $role_id";
+    $User = $this->db->query($queryUser)->row_array();
+    $queryMenu = "SELECT `user_menu`.`id_menu`, `menu`
                     FROM `user_menu` INNER JOIN `user_access_menu`
                     ON `user_menu`.`id_menu` = `user_access_menu`.`menu_id`
                     WHERE `user_access_menu`.`role_id` = $role_id
                     ORDER BY `user_access_menu`.`menu_id` ASC ";
 
+}
 $menu = $this->db->query($queryMenu)->result_array();
 ?>
 

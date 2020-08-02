@@ -31,7 +31,7 @@ class Auth extends CI_Controller
 
     public function absen()
     {
-        $this->form_validation->set_rules('nim', 'nim', 'trim|required');
+        $this->form_validation->set_rules('email', 'email', 'trim|required');
 
         if ($this->form_validation->run() == false) {
 
@@ -46,17 +46,26 @@ class Auth extends CI_Controller
 
     private function _loginAbsen()
     {
-        $nim = $this->input->post('nim');
-        $anggota = $this->db->get_where('anggota', ['nim' => $nim])->row_array();
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $anggota = $this->db->get_where('anggota', ['email' => $email])->row_array();
 
         if ($anggota) {
-            $data = [
-                'nim' => $anggota['nim']
-            ];
-            $this->session->set_userdata($data);
-            redirect('absen');
+            if ($password == $anggota['password']) {
+
+                $data = [
+                    'email' => $anggota['email'],
+                    'role_id' => $anggota['role_id'],
+
+                ];
+                $this->session->set_userdata($data);
+                redirect('absen');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah</div>');
+                redirect('auth/absen');
+            }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nim is not registered!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth/absen');
         }
     }
@@ -76,7 +85,7 @@ class Auth extends CI_Controller
 
                     $data = [
                         'email' => $user['email'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
@@ -107,11 +116,11 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('role_nama', 'Role Nama', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email has already registered!'
+            'is_unique' => 'This email has already registered!',
         ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
             'matches' => 'Password dont match!',
-            'min_length' => 'Password to short!'
+            'min_length' => 'Password to short!',
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
@@ -137,7 +146,7 @@ class Auth extends CI_Controller
     }
     public function logoutAnggota()
     {
-        $this->session->unset_userdata('nim');
+        $this->session->unset_userdata('email');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
         redirect('auth/absen');
     }

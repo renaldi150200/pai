@@ -1,3 +1,6 @@
+
+
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -7,11 +10,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('absen/index')  ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('absen/index')?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">AL - JAZARI</div>
+                <div class="sidebar-brand-text mx-3">PAI</div>
             </a>
 
             <!-- Divider -->
@@ -20,14 +23,14 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('absen/index')  ?>">
+                <a class="nav-link" href="<?=base_url('absen/index')?>">
                     <i class="fas fa-clipboard-list  "></i>
-                    <span>Absen</span></a>
+                    <span>Materi</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('absen/tukar')  ?>">
+                <a class="nav-link" href="<?=base_url('absen/tukar')?>">
                     <i class="fas fa-gift"></i>
-                    <span>Tukar Koin</span></a>
+                    <span>Kelas</span></a>
             </li>
 
             <!-- Divider -->
