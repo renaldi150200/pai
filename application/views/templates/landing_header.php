@@ -74,7 +74,7 @@
                     </li>
 
                     <!-- Dropdown Menu -->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle page-scroll" href="#video" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">PRAKTIKUM</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="article-details.html"><span class="item-text">MATERI PRAKTIKUM</span></a>
@@ -83,11 +83,11 @@
                             <div class="dropdown-items-divide-hr"></div>
                             <a class="dropdown-item" href="privacy-policy.html"><span class="item-text">HASIL PRAKTIKUM</span></a>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- end of dropdown menu -->
 
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#pricing">PRICING</a>
+                        <a class="nav-link page-scroll" href="#footer">ABOUT</a>
                     </li>
                 </ul>
                 <span class="nav-item">
