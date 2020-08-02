@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class Landing extends CI_Controller
 {
 
     /**
@@ -21,6 +21,22 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
-        $this->load->view('welcome_message');
+        $this->load->view('templates/landing_header');
+        $this->load->view('landing/index');
+        $this->load->view('templates/landing_script');
     }
+
+    public function login()
+    {
+        $this->load->view('templates/landing_header');
+        $this->load->view('landing/log-in');
+        $this->load->view('templates/landing_script');
+    }
+    public function register()
+    {
+        $this->load->view('templates/landing_header');
+        $this->load->view('landing/sign-up');
+        $this->load->view('templates/landing_script');
+    }
+
 }
