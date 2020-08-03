@@ -3,8 +3,9 @@
 class Kelas_model extends CI_Model
 {
 
-    public function input_Kelas()
+    public function input_Kelas($email)
     {
+
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         function generate_string($input, $strength = 16)
@@ -24,10 +25,12 @@ class Kelas_model extends CI_Model
         $data = [
             'nama_kelas' => htmlspecialchars($this->input->post('nama_kelas', true)),
             'kode_kelas' => $kode_kelas,
+            'email_pengajar' => $email,
             'desc' => htmlspecialchars($this->input->post('desc', true)),
 
         ];
 
         $this->db->insert('kelas', $data);
     }
+
 }
