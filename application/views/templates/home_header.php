@@ -36,19 +36,24 @@
     .navbar-custom{
     background-color: #FFFFF3;
     }
-    @media (min-width: 992px) {
+    .absen-yaumiyah{
+        min-height:400px;
+        background-color:#D4DFE6;
+    }
+    @media screen and (min-width: 992px) {
         .navbar-custom{
     height:50px;
     }
     .background-header{
-        height:300px;
+        height:200px;
+    }
+
+    .yaumiyah{
+        float:right;
+        height:300px;width:500px;
     }
 }
-    @media (min-width: 560px) {
-    .background-header{
-        height:100px;
-    }
-}
+
     .navbar-custom .navbar-toggler {
 	color: #000;
     }
@@ -69,6 +74,7 @@
     background-color: #E71D36;
     color:#FFFFF3;
     }
+
 
     .list-nav{
         color:#30A9DE;

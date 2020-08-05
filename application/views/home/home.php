@@ -17,10 +17,10 @@
     <!-- praktikum -->
     <div class="container mb-5">
       <div class="row">
-        <div class="col-12" style="height:200px;">
-          <h1 class="mt-5 ">Praktikum PAI bisa <br>dilakukan #dirumahaja</h1>
+        <div class="col-12" >
+          <h1 class="mt-5">Praktikum PAI bisa <br>dilakukan #dirumahaja</h1>
         </div>
-        <div class="col-12 mt-md-n4">
+        <div class="col-12 mt-1">
           <a href="" class="btn btn-primary">Mulai Belajar</a>
         </div>
       </div>
@@ -28,16 +28,17 @@
     <!-- end -->
 
     <!-- Absen Yaumiyah -->
-<div class="container-fluid " style="height:400px; background-color:#D4DFE6;">
+<div class="container-fluid absen-yaumiyah" >
   <div class="container">
 <div class="row" >
-    <div class="col-md-7 col-12 mt-md-5">
+    <div class="col-md-12 col-12 mt-md-5">
+    <img src="<?=base_url('assets/img/pelajar/home/');?>2.png" class="rounded img-fluid yaumiyah mt-3" >
       <h4 class="mt-5">Absensi Amalan Yaumiyah</h4>
       <br>
-      <p >Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik <br>wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi <br>muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+      <p >Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
       <a href="" class="btn btn-primary mt-md-4">Mulai Absen</a>
     </div>
-    <div class="col-md-5 mt-5"><img src="<?=base_url('assets/img/pelajar/home/');?>2.png" class="rounded" style="height:300px;width:500px;"></div>
+    <div class="col-md-5 mt-5"></div>
   </div>
 </div>
 </div>
