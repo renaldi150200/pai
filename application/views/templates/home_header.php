@@ -45,7 +45,7 @@
     height:50px;
     }
     .background-header{
-        height:200px;
+        height:150px;
     }
 
     .yaumiyah{

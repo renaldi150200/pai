@@ -67,9 +67,6 @@
                         <a class="nav-link page-scroll" href="<?=base_url('landing/');?>">HOME <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#features"></a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link page-scroll" href="#details">DETAILS</a>
                     </li>
 

@@ -58,10 +58,20 @@
                 <div class="col-lg-12">
 
                 <!-- Card -->
-                  <div class="card border-primary" style="width: 18rem;">
+                  <div class="card border-primary" style="width: 28rem;">
                     <img src="<?=base_url('assets/img/pelajar/home/');?>3.jfif" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Materi Wudhu</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card border-primary" style="width: 28rem;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>3.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Materi Shalat</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
                     </div>
