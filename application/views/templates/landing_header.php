@@ -29,7 +29,7 @@
 	<link href="<?=base_url('assets/vendor/asset-landing/');?>css/styles.css" rel="stylesheet">
 
 	<!-- Favicon  -->
-    <link rel="icon" href="<?=base_url('assets/vendor/asset-landing/');?>images/favicon.png">
+    <link rel="icon" href="<?=base_url('assets/img/pelajar/home/');?>pai.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
 
@@ -67,7 +67,7 @@
                         <a class="nav-link page-scroll" href="<?=base_url('landing/');?>">HOME <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#details">DETAILS</a>
+                        <a class="nav-link page-scroll" href="#details">DETAIL</a>
                     </li>
 
                     <!-- Dropdown Menu -->
@@ -84,11 +84,11 @@
                     <!-- end of dropdown menu -->
 
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#footer">ABOUT</a>
+                        <a class="nav-link page-scroll" href="#footer">TENTANG</a>
                     </li>
                 </ul>
                 <span class="nav-item">
-                    <a class="btn-outline-sm" href="<?=base_url('landing/login');?>">LOG IN</a>
+                    <a class="btn-outline-sm" href="<?=base_url('landing/login');?>">MASUK</a>
                 </span>
             </div>
         </div> <!-- end of container -->

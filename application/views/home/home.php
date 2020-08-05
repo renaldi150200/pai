@@ -51,28 +51,106 @@
         <div class="container mt-md-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="h2-heading">Materi Praktikum PAI</h2>
+                    <h2 class="h2-heading ">Materi Praktikum PAI</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
 
                 <!-- Card -->
-                  <div class="card border-primary" style="width: 28rem;">
-                    <img src="<?=base_url('assets/img/pelajar/home/');?>3.jfif" class="card-img-top" alt="...">
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>3.png" class="card-img-top" alt="...">
+                    <div class="card-body ">
+                      <h5 class="card-title mt-3">Materi Wudhu</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>4.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">Materi Wudhu</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <h5 class="card-title mt-3">Materi Shalat</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
                     </div>
                   </div>
                 <!-- end of Card -->
                 <!-- Card -->
-                  <div class="card border-primary" style="width: 28rem;">
-                    <img src="<?=base_url('assets/img/pelajar/home/');?>3.jfif" class="card-img-top" alt="...">
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>5.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">Materi Shalat</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <h5 class="card-title mt-3">Materi Janaiz</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>6.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title mt-3">Materi BBAQ</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of cards-1 -->
+    <!-- end of Materi -->
+
+    <!-- Praktikum -->
+    <div id = "details"class="cards-1 praktikum mb-4">
+        <div class="container mt-md-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="h2-heading">Praktikum PAI</h2>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>3.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title mt-3">Praktikum Wudhu</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>4.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title mt-3">Praktikum Shalat</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>5.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title mt-3">Praktikum Janaiz</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                  </div>
+                <!-- end of Card -->
+                <!-- Card -->
+                  <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
+                    <img src="<?=base_url('assets/img/pelajar/home/');?>6.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title mt-3">Praktikum BBAQ</h5>
+                      <p class="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
                     </div>
                   </div>
@@ -100,35 +178,32 @@
                 <div class="col-md-4">
                     <div class="footer-col first">
                         <h4>Tentang PAI</h4>
-                        <p class="p-small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus cumque expedita vitae esse nam, repellat tempora, cupiditate ratione ipsum, blanditiis omnis tenetur sapiente deserunt sint assumenda tempore reiciendis est accusamus.</p>
+                        <p class="p-small">Praktikum Agama Islam adalah kegiatan praktikum dari mata kuliah Agama Islam yang wajib diikuti oleh seluruh mahasiswa/i muslim di tahun pertama perkuliahan</p>
                     </div>
                 </div> <!-- end of col -->
                 <div class="col-md-4">
                     <div class="footer-col middle">
-                        <h4>Important Links</h4>
+                        <h4>partners</h4>
                         <ul class="list-unstyled li-space-lg p-small">
                             <li class="media">
                                 <i class="fas fa-square"></i>
-                                <div class="media-body">Our business partners <a class="white" href="#your-link">startupguide.com</a></div>
+                                <div class="media-body">Universitas Mulawarman <a class="white" href="#your-link">Unmul.ac.id</a></div>
                             </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Read our <a class="white" href="terms-conditions.html">Terms & Conditions</a>, <a class="white" href="privacy-policy.html">Privacy Policy</a></div>
-                            </li>
+
                         </ul>
                     </div>
                 </div> <!-- end of col -->
                 <div class="col-md-4">
                     <div class="footer-col last">
-                        <h4>Contact</h4>
+                        <h4>Kontak</h4>
                         <ul class="list-unstyled li-space-lg p-small">
                             <li class="media">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div class="media-body">22 Innovative, San Francisco, CA 94043, US</div>
+                                <div class="media-body">Samarinda, Kalimantan Timur</div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-envelope"></i>
-                                <div class="media-body"><a class="white" href="mailto:contact@tivo.com">contact@tivo.com</a> <i class="fas fa-globe"></i><a class="white" href="#your-link">www.tivo.com</a></div>
+                                <div class="media-body"><a class="white" >pai.unmul@gmail.com</a> <i class="fas fa-globe"></i><a class="white" href="#your-link">www.paiunmul.com</a></div>
                             </li>
                         </ul>
                     </div>
@@ -144,7 +219,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">Template by Inovatik</a></p>
+                    <p class="p-small">Praktikum Agama Islam</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->

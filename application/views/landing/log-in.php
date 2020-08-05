@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Log In</h1>
-                   <p>You don't have a password? Then please <a class="white" href="<?=base_url('landing/register');?>">Sign Up</a></p>
+                   <p>Belum Mempunyai Akun ? Silahkan <a class="white" href="<?=base_url('landing/register');?>">Daftar</a></p>
                     <!-- Sign Up Form -->
 
                     <div class="form-container">

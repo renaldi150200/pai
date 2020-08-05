@@ -8,18 +8,14 @@
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
                             <h1>Praktikum Agama Islam</h1>
-<<<<<<< HEAD
-                            <p class="p-large">Praktikum Agama Islam adalah kegiatan praktikum dari matakuliah Agama Islam yang WAJIB diikuti oleh mahasiswa/i muslim di tahun pertama perkuliahan</p>
-=======
                             <p class="p-large">Praktikum Agama Islam adalah kegiatan praktikum dari mata kuliah Agama Islam yang wajib diikuti oleh seluruh mahasiswa/i muslim di tahun pertama perkuliahan</p>
->>>>>>> de8e6e11db2079ca0f308dc3c2f215b0f28cdd4f
-                            <a class="btn-solid-lg page-scroll" href="<?=base_url('landing/register');?>">SIGN UP</a>
+                            <a class="btn-solid-lg page-scroll" href="<?=base_url('landing/register');?>">DAFTAR</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6 col-xl-7">
                         <div class="image-container">
                             <div class="img-wrapper">
-                                <img class="img-fluid" src="<?=base_url('assets/vendor/asset-landing/');?>images/landing3.jpg" alt="alternative">
+                                <img class="img-fluid" src="<?=base_url('assets/vendor/asset-landing/');?>images/landing3.png" alt="alternative">
                             </div> <!-- end of img-wrapper -->
                         </div> <!-- end of image-container -->
                     </div> <!-- end of col -->
@@ -37,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="above-heading">DESCRIPTION</div>
+                    <div class="above-heading">DESKRIPSI</div>
                     <h2 class="h2-heading">Fitur - Fitur yang Tersedia</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -112,7 +108,7 @@
                                 <i class="fas fa-square"></i>
                                 <div class="media-body">Universitas Mulawarman <a class="white" href="#your-link">Unmul.ac.id</a></div>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div> <!-- end of col -->
