@@ -23,5 +23,13 @@ class Home extends CI_Controller
         $this->load->view('home/index', $data);
         $this->load->view('templates/user_footer');
     }
+    public function home()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $this->load->view('templates/home_header');
+        $this->load->view('home/home', $data);
+        $this->load->view('templates/landing_script');
+    }
 
 }
