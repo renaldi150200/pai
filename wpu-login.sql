@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Agu 2020 pada 06.59
+-- Waktu pembuatan: 03 Agu 2020 pada 12.10
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -169,6 +169,49 @@ INSERT INTO `anggota` (`id`, `email`, `nama`, `ttl`, `jenkel`, `password`, `alam
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `anggota_kelas`
+--
+
+CREATE TABLE `anggota_kelas` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `kode_kelas` varchar(10) NOT NULL,
+  `role_nama` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `anggota_kelas`
+--
+
+INSERT INTO `anggota_kelas` (`id`, `email`, `kode_kelas`, `role_nama`) VALUES
+(1, 'eric@gmail.com', 'OoCAfw', 'Pengajar');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL,
+  `kode_kelas` varchar(10) NOT NULL,
+  `nama_kelas` varchar(100) NOT NULL,
+  `desc` varchar(100) NOT NULL,
+  `email_pengajar` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `kode_kelas`, `nama_kelas`, `desc`, `email_pengajar`) VALUES
+(1, '8x9vvM', '', 'wwww', ''),
+(2, 'OoCAfw', 'tpai kel-11 fkti', 'Renaldi', 'eric@gmail.com'),
+(3, 'OKUm3z', 'tpai kel-11 ft', 'kelas malam', 'eric@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `status`
 --
 
@@ -213,7 +256,10 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (6, 'Renaldi Panji Wibowo', 'r1815025079@gmail.com', 'default1.png', '$2y$10$/uagjHZdKwTW96xWlytFKu1Gf8xnd/EDPHK.FiGOEizHcpFEp7Vki', 2, 1, 1575935004, 'SPK'),
 (7, 'Ahmad Zulkifli', 'mltama1308@gmail.com', 'default1.png', '$2y$10$2/azLRHlHLA.7eVSNVizeOsi24oax4BoXvEnGKetF5CQB/jdJfJMu', 3, 1, 1577266717, 'Ketua Umum'),
 (8, 'Renaldi Panji Wibowo', 'renaldi@gmail.com', 'default1.png', '$2y$10$s3QodVt1lLvKx9kKcM8EzeP5VoTy075T7tWGkWUOxMUrzdHPrVkyy', 1, 1, 1596264624, 'Admin'),
-(9, 'Friska Nabila Oktavian', 'renaldi@gmail.comd', 'default1.png', '$2y$10$.TvwZDWp4gFLnzv2747...6Sg/9svQFcl69Xf9lVNZEnGp3g5HT9q', 2, 1, 1596275470, 'pengajar');
+(9, 'Friska Nabila Oktavian', 'renaldi@gmail.comd', 'default1.png', '$2y$10$.TvwZDWp4gFLnzv2747...6Sg/9svQFcl69Xf9lVNZEnGp3g5HT9q', 2, 1, 1596275470, 'pengajar'),
+(10, 'renald', 'r@gmail.com', 'default1.png', '$2y$10$vhmqxuhWEr1i17eGEnFEX.a/J0Art3C4e9f3Rqjadr.CeGZ64oAgK', 3, 1, 1596348040, 'pelajar'),
+(12, 'eric contena', 'eric@gmail.com', 'default1.png', '$2y$10$Wqr7zA.Rj6q0w5t/ODCGpe/uHVdze.mKhOabBhcgqweN1ijPtAqum', 2, 1, 1596348653, 'pengajar'),
+(13, 'eric contena', 'contena@gmail.com', 'default1.png', '$2y$10$rEG9dqOrPar8bfm.DvmjV.TW2GSomlD5elq9bzpOD/J0hTxL0SR8i', 2, 1, 1596362366, 'pengajar');
 
 -- --------------------------------------------------------
 
@@ -233,16 +279,18 @@ CREATE TABLE `user_access_menu` (
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
-(3, 2, 2),
-(13, 3, 2),
-(15, 3, 6),
-(16, 3, 7),
-(18, 1, 7),
+(3, 2, 4),
+(13, 3, 4),
 (19, 1, 6),
-(20, 1, 3),
-(21, 2, 7),
+(20, 1, 5),
 (22, 1, 8),
-(23, 1, 2);
+(26, 1, 4),
+(28, 3, 2),
+(29, 2, 2),
+(30, 2, 0),
+(31, 2, 3),
+(32, 3, 3),
+(33, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -260,9 +308,11 @@ CREATE TABLE `user_menu` (
 --
 
 INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
+(0, 'Home'),
 (1, 'admin_login'),
-(2, 'User'),
-(3, 'Menu'),
+(3, 'Materi'),
+(4, 'User'),
+(5, 'Menu'),
 (6, 'Data User'),
 (7, 'Data Anggota'),
 (8, 'Agenda');
@@ -285,7 +335,7 @@ CREATE TABLE `user_role` (
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Administrator'),
 (2, 'Pengajar'),
-(3, 'Ketua Umum');
+(3, 'Pelajar');
 
 -- --------------------------------------------------------
 
@@ -308,15 +358,17 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin_login/dashboard', 'fas fa-fw fa-tachometer-alt', 1),
-(2, 2, 'My Profile', 'user/myprofile', 'fas fa-fw fa-user', 1),
-(3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-(4, 3, 'Menu Management', 'menu/menu', 'fas fa-fw fa-folder', 1),
-(5, 3, 'Sub Menu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
+(2, 4, 'My Profile', 'user/myprofile', 'fas fa-fw fa-user', 1),
+(3, 4, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
+(4, 5, 'Menu Management', 'menu/menu', 'fas fa-fw fa-folder', 1),
+(5, 5, 'Sub Menu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
 (6, 1, 'Role', 'admin_login/role', 'fas fa-fw fa-user-tie', 1),
-(7, 2, 'Change Password', 'user/changepassword', 'fas fa-key', 1),
+(7, 4, 'Change Password', 'user/changepassword', 'fas fa-key', 1),
 (8, 6, 'Lihat Data User', 'data/user', 'fas fa-fw fa-user-tie', 1),
 (9, 7, 'Lihat Data Anggota', 'data/anggota', 'fas fa-user', 1),
-(10, 8, 'Agenda', 'agenda/taklim', 'fas fa-user-tie', 1);
+(10, 8, 'Agenda', 'agenda/taklim', 'fas fa-user-tie', 1),
+(12, 3, 'Materi', 'materi/index', 'fas fa-book-open', 1),
+(13, 0, 'Home', 'home/index', 'fas fa-home', 1);
 
 --
 -- Indexes for dumped tables
@@ -346,6 +398,19 @@ ALTER TABLE `agenda_bantu`
 ALTER TABLE `anggota`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nim` (`email`);
+
+--
+-- Indeks untuk tabel `anggota_kelas`
+--
+ALTER TABLE `anggota_kelas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `kode_kelas` (`kode_kelas`);
 
 --
 -- Indeks untuk tabel `user`
@@ -400,16 +465,28 @@ ALTER TABLE `anggota`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
+-- AUTO_INCREMENT untuk tabel `anggota_kelas`
+--
+ALTER TABLE `anggota_kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
@@ -427,7 +504,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
