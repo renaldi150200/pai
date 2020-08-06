@@ -136,7 +136,7 @@
                         <a class="nav-link page-scroll" href="<?=base_url('home/amalan');?>"><span class="list-nav">Absensi</span> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?=base_url('home');?>"><span class="list-nav">Materi</span> </a>
+                        <a class="nav-link page-scroll" href="<?=base_url('home/materi');?>"><span class="list-nav">Materi</span> </a>
                     </li>
 
                     <li class="nav-item">

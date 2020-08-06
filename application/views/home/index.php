@@ -51,7 +51,7 @@
         <div class="container mt-md-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="h2-heading ">Materi Praktikum PAI</h2>
+                    <h2 class="h2-heading "><a href="<?=base_url('home/materi');?>">Materi Praktikum PAI</a></h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -109,7 +109,7 @@
         <div class="container mt-md-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="h2-heading">Praktikum PAI</h2>
+                    <h2 class="h2-heading"><a href="<?=base_url('home/praktikum');?>">Praktikum PAI</a></h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -161,7 +161,7 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of cards-1 -->
-    <!-- end of Materi -->
+    <!-- end of Praktikum -->
 
 
     <!-- Features -->
