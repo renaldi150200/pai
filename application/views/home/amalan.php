@@ -1,21 +1,160 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-12 mt-md-5">
+      </div>
+    </div>
+    <!-- Absen Yaumiyah -->
+    <div class="container-fluid absen-yaumiyah " >
+      <div class="container">
+        <div class="row" >
+          <div class="col-md-12 col-12 mt-md-5">
+            <img src="<?=base_url('assets/img/pelajar/home/');?>2.png" class="rounded img-fluid yaumiyah mt-3" >
+            <h4 class="mt-5">Absensi Amalan Yaumiyah</h4>
+            <br>
+            <p >Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+          </div>
+          <div class="col-md-5 mt-5"></div>
+        </div>
+      </div>
+    </div>
+    <!-- end Absen Yaumiyah -->
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+    <!-- praktikum -->
+    <div class="container mb-5">
+        <form class="mt-5">
+        <table class="table table-striped">
+        Absensi Amalan Yaumiyah Harian
+        <thead>
+          <tr>
+            <th>Selasa 27 agustus 2020</th>
+            <th>Status</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr class="mt-5 dark">
+            
+            <td>
+            <div>Terakhir di edit tg 29 ajkdhub 2929</div>
+            </td>
+            <td>
+            <div type="submit" class="btn btn-primary ">Submit</div>
+            </td>
+          <tr>
 
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-  </body>
-</html>
+          </tr>
+        </tbody>
+      </table>
+      </form>
+
+      <form class="mt-5">
+        <table class="table table-striped">
+        Absensi Amalan Yaumiyah Bulanan
+        <thead>
+          <tr>
+            <th>Selasa 27 agustus 2020</th>
+            <th>Status</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>nama Amalan</td>
+            <td>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tidak
+            </label>
+            </td>
+            <td>
+            <input type="text" class="form-control" id="usr">
+            </td>
+          </tr>
+          </tr class="mt-5">
+            
+            <td>
+            <div>Terakhir di edit tg 29 ajkdhub 2929</div>
+            </td>
+            <td>
+            <div type="submit" class="btn btn-primary ">Submit</div>
+            </td>
+          <tr>
+
+          </tr>
+        </tbody>
+      </table>
+      </form>
+</div>
+    <!-- end -->

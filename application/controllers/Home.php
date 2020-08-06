@@ -28,9 +28,10 @@ class Home extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-            $this->session->userdata('email')])->row_array();
-            $this->load->view('home/amalan');
+        $data['user'] = $this->db->get_where('user', ['email' =>$this->session->userdata('email')])->row_array();
+        $this->load->view('templates/home_header');
+        $this->load->view('home/amalan');
+        $this->load->view('templates/landing_script');
             
     }
     public function home()
