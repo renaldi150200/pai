@@ -36,7 +36,7 @@
       <h4 class="mt-5">Absensi Amalan Yaumiyah</h4>
       <br>
       <p >Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
-      <a href="" class="btn btn-primary mt-md-4">Mulai Absen</a>
+      <a href="<?=base_url('home/amalan');?>" class="btn btn-primary mt-md-4">Mulai Absen</a>
     </div>
     <div class="col-md-5 mt-5"></div>
   </div>
