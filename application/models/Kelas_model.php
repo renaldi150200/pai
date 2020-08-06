@@ -33,4 +33,9 @@ class Kelas_model extends CI_Model
         $this->db->insert('kelas', $data);
     }
 
+    public function getKelas()
+    {
+
+    }
+
 }

@@ -94,7 +94,7 @@ class Auth extends CI_Controller
 
                         redirect('user/myprofile');
                     } else {
-                        redirect('home/home');
+                        redirect('home');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');

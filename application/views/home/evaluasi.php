@@ -2,7 +2,30 @@
 <?php
 
 if ($anggota == 'true') {
+    ?>
 
+<div style="margin-top:100px;"></div>
+    <div class="container">
+<h1 class='mx-auto'>Daftar Kelas</h1>
+    <div class="row">
+    <?php foreach ($data_kelas as $class): ?>
+        <div class="col-12 ">
+        <img src="<?=base_url('assets/img/kelas/kelas.jpg')?>" class="img-fluid" alt="Responsive image">
+            <!-- <div class="card mb-3">
+            <img src="<?=base_url('assets/img/kelas/kelas.jpg')?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?=$class['nama_kelas'];?></h5>
+                <p class="card-text"><?=$class['desc'];?></p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            </div> -->
+        </div>
+        <?php endforeach;?>
+    </div>
+    </div>
+
+    <div style="margin-top:50px;"></div>
+<?php
 } else {
     ?>
     <div style="margin-top:200px;"></div>
@@ -18,7 +41,7 @@ if ($anggota == 'true') {
 </div>
 <!-- alert -->
     </div>
-    <div style="margin-bottom:250px;"></div>
+    <div style="margin-top:50px;"></div>
     <!-- container -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

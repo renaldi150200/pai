@@ -113,7 +113,7 @@
             <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Tivo</a> -->
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.html"><img src="<?=base_url('assets/img/pelajar/home/');?>logo.png" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="<?=base_url('home');?>"><img src="<?=base_url('assets/img/pelajar/home/');?>logo.png" alt="alternative"></a>
 
             <!-- Mobile Menu Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,14 +125,14 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#features"><span class="list-nav">Absensi</span> </a>
+                        <a class="nav-link page-scroll" href="#absensi"><span class="list-nav">Absensi</span> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#details"><span class="list-nav">Materi</span> </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#footer"><span class="list-nav">Praktikum</span> </a>
+                        <a class="nav-link page-scroll" href="#praktikum"><span class="list-nav">Praktikum</span> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="<?=base_url('home/evaluasi');?>"><span class="list-nav">Evaluasi</span></a>
