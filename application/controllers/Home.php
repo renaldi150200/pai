@@ -96,4 +96,16 @@ class Home extends CI_Controller
         $this->load->view('templates/landing_script');
     }
 
+
+    public function materi()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['title'] = 'Home';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('templates/amalan_header');
+        $this->load->view('home/materi');
+        $this->load->view('templates/landing_script');
+
+    }
 }
