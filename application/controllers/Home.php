@@ -25,11 +25,28 @@ class Home extends CI_Controller
     }
     public function home()
     {
+        $data['email'] = $this->session->userdata('email');
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-        $data['url'] = 'auth/login';
+
         $this->load->view('templates/home_header', $data);
         $this->load->view('home/home', $data);
+        $this->load->view('templates/home_footer');
+        $this->load->view('templates/landing_script');
+    }
+    public function evaluasi()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $anggota = $this->db->get_where('anggota_kelas', ['email' => $email])->result_array();
+        if (!$anggota) {
+            $data['anggota'] = 'false';
+        } else {
+            $data['anggota'] = 'true';
+        }
+        $this->load->view('templates/home_header', $data);
+        $this->load->view('home/evaluasi', $data);
+        $this->load->view('templates/home_footer');
         $this->load->view('templates/landing_script');
     }
 

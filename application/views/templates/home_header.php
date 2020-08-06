@@ -135,7 +135,7 @@
                         <a class="nav-link page-scroll" href="#footer"><span class="list-nav">Praktikum</span> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#footer"><span class="list-nav">Evaluasi</span></a>
+                        <a class="nav-link page-scroll" href="<?=base_url('home/evaluasi');?>"><span class="list-nav">Evaluasi</span></a>
                     </li>
                 </ul>
                 <span class="nav-item">
