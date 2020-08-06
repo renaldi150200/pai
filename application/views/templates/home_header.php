@@ -53,7 +53,6 @@
         height:300px;width:500px;
     }
 }
-
     .navbar-custom .navbar-toggler {
 	color: #000;
     }
@@ -81,12 +80,17 @@
     }
     .navbar-custom.top-nav-collapse {
 		background-color: #fff;
-	}
+    }
+
+    .praktikum{
+        min-height:425px;
+        background-color:#D4DFE6;
+    }
 
     </style>
 
 	<!-- Favicon  -->
-    <link rel="icon" href="<?=base_url('assets/vendor/asset-landing/');?>images/favicon.png">
+    <link rel="icon" href="<?=base_url('assets/img/pelajar/home/');?>pai.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
 
@@ -135,7 +139,7 @@
                     </li>
                 </ul>
                 <span class="nav-item">
-                    <a class="btn-outline-sm " href="<?=base_url('landing/login');?>">Keluar</a>
+                    <a class="btn-outline-sm " href="<?=base_url('auth/logout');?>">Keluar</a>
                 </span>
             </div>
         </div> <!-- end of container -->
