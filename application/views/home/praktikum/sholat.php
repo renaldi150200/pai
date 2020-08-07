@@ -179,7 +179,7 @@
 	        </ul>
 
 	        <div class="mb-5 px-4">
-			<a href="" class="btn btn-outline-danger">Kembali</a>
+			<a href="<?=base_url('home/praktikum');?>" class="btn btn-outline-danger">Kembali</a>
 			</div>
 
 	        <div class="footer px-4">
