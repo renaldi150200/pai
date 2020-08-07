@@ -110,7 +110,7 @@
   <body>
 
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="order-last" class="img" style="background-image: url(<?=base_url('assets/vendor/asset-praktikum/');?>images/bg_1.jpg);">
+			<nav id="sidebar" class="order-last" class="img" style="background-image: url(<?=base_url('assets/vendor/asset-praktikum/');?>images/gambar.jpg);">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	        </button>
