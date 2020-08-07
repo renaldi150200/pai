@@ -11,14 +11,9 @@ if ($anggota == 'true') {
     <?php foreach ($data_kelas as $class): ?>
         <div class="col-12 ">
         <img src="<?=base_url('assets/img/kelas/kelas.jpg')?>" class="img-fluid" alt="Responsive image">
-            <!-- <div class="card mb-3">
-            <img src="<?=base_url('assets/img/kelas/kelas.jpg')?>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><?=$class['nama_kelas'];?></h5>
-                <p class="card-text"><?=$class['desc'];?></p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-            </div> -->
+          <h3><?=$class['nama_kelas'];?></h3>
+          <h3><?=$class['desc'];?></h3>
+
         </div>
         <?php endforeach;?>
     </div>
