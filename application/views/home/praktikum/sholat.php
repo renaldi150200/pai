@@ -192,13 +192,12 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Sidebar #04</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <img class="img-fluid" alt="Responsive image" src="<?=base_url('assets/img/pelajar/praktikum/sholat/');?>sholat.png" alt="" class="rounded">
+
 		<!-- Pose Classification -->
 		<div class="container">
 				<div id="info">
-					<p id="info_start">Klik Icon Microphone Untuk Memulai</p>
+					<p id="info_start">Baca Basmallah Sebelum Memulai Praktikum Dengan Klik Icon Mic Bawah ini</p>
 					<p id="info_speak_now">Mulai Membaca</p>
 					<p id="info_no_speech">No speech was detected. You may need to adjust your
 						<a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
@@ -217,7 +216,7 @@
 					</div>
 					<div class="right">
 					<button id="start_button" onclick="startButton(event)">
-						<img id="start_img" src="mic.gif" alt="Start"></button>
+						<img id="start_img" src="<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic.gif" alt="Start"></button>
 					</div>
 					<div id="results">
 					<span id="final_span" class="final"></span>
@@ -297,17 +296,17 @@
     recognition.onstart = function () {
       recognizing = true;
       showInfo('info_speak_now');
-      start_img.src = 'mic-animate.gif';
+      start_img.src = '<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic-animate.gif';
     };
 
     recognition.onerror = function (event) {
       if (event.error == 'no-speech') {
-        start_img.src = 'mic.gif';
+        start_img.src = '<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic.gif';
         showInfo('info_no_speech');
         ignore_onend = true;
       }
       if (event.error == 'audio-capture') {
-        start_img.src = 'mic.gif';
+        start_img.src = '<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic.gif';
         showInfo('info_no_microphone');
         ignore_onend = true;
       }
@@ -326,7 +325,7 @@
       if (ignore_onend) {
         return;
       }
-      start_img.src = 'mic.gif';
+      start_img.src = '<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic.gif';
       if (!final_transcript) {
         showInfo('info_start');
         return;
@@ -426,7 +425,7 @@
     ignore_onend = false;
     final_span.innerHTML = '';
     interim_span.innerHTML = '';
-    start_img.src = 'mic-slash.gif';
+    start_img.src = '<?=base_url('assets/img/pelajar/praktikum/sholat/');?>mic-slash.gif';
     showInfo('info_allow');
     showButtons('none');
     start_timestamp = event.timeStamp;

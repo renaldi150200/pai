@@ -135,4 +135,11 @@ class Home extends CI_Controller
     {
         $this->load->view('templates/pose');
     }
+    public function sholatPose()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('home/praktikum/sholat_pose');
+    }
 }
