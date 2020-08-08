@@ -91,9 +91,8 @@ class Auth extends CI_Controller
                     if ($user['role_id'] == 1) {
                         redirect('admin_login/dashboard');
                     } elseif ($user['role_id'] == 2) {
-
                         redirect('user/myprofile');
-                    } else {
+                    } elseif ($user['role_id'] == 3) {
                         redirect('home');
                     }
                 } else {

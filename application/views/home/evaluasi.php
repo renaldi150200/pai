@@ -48,17 +48,17 @@ if ($anggota == 'true') {
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post" action="<?=base_url('home/cariKelas')?>">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Kode Kelas:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label class="col-form-label" >Kode Kelas:</label>
+            <input type="text" class="form-control" name="kode_kelas">
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-        <button type="button" class="btn btn-primary">Cari</button>
+        <button type="submit" class="btn btn-primary">Cari</button>
       </div>
+        </form>
     </div>
   </div>
 </div>

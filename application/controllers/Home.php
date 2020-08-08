@@ -11,19 +11,7 @@ class Home extends CI_Controller
         $this->load->model('Kelas_model');
         $this->load->model('Pelajar_model');
     }
-    // public function index()
-    // {
-    //     $email = $this->session->userdata('email');
-    //     $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-    //     $data['title'] = 'Home';
-    //     $data['user'] = $this->db->get_where('user', ['email' =>
-    //         $this->session->userdata('email')])->row_array();
-    //     $this->load->view('templates/user_header', $data);
-    //     $this->load->view('templates/user_sidebar', $data);
-    //     $this->load->view('templates/user_topbar', $data);
-    //     $this->load->view('home/index', $data);
-    //     $this->load->view('templates/user_footer');
-    // }
+
     public function index()
     {
         $data['email'] = $this->session->userdata('email');
@@ -35,6 +23,7 @@ class Home extends CI_Controller
         $this->load->view('templates/home_footer');
         $this->load->view('templates/landing_script');
     }
+    /* Absensi Amalan Yaumiyah */
     public function amalan()
     {
         $email = $this->session->userdata('email');
@@ -70,7 +59,9 @@ class Home extends CI_Controller
         }
 
     }
+    /* End  Absensi Amalan Yaumiyah */
 
+    /* Praktikum PAI */
     public function praktikum()
     {
         $email = $this->session->userdata('email');
@@ -80,7 +71,6 @@ class Home extends CI_Controller
         $this->load->view('home/praktikum');
         $this->load->view('templates/home_footer');
         $this->load->view('templates/landing_script');
-
     }
 
     public function sholat()
@@ -95,6 +85,20 @@ class Home extends CI_Controller
 
     }
 
+    public function pose()
+    {
+        $this->load->view('templates/pose');
+    }
+    public function sholatPose()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('home/praktikum/sholat_pose');
+    }
+    /* End Of Praktikum PAI */
+
+    /* Evaluasi */
     public function evaluasi()
     {
         $email = $this->session->userdata('email');
@@ -120,6 +124,44 @@ class Home extends CI_Controller
         $this->load->view('templates/landing_script');
     }
 
+    public function cariKelas()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $kode_kelas = $this->input->post('kode_kelas', true);
+        $kelas = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
+
+        if (!$kelas) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelas yang anda cari tidak ada harap cek kembali kode kelas yang anda cari</div>');
+            // redirect('home/cariKelas');
+            $this->load->view('templates/amalan_header');
+            $this->load->view('home/cari_kelas', $data);
+            $this->load->view('templates/home_footer');
+            $this->load->view('templates/landing_script');
+        } else {
+
+            $data['kelas'] = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
+            $this->load->view('templates/amalan_header');
+            $this->load->view('home/cari_kelas', $data);
+            $this->load->view('templates/home_footer');
+            $this->load->view('templates/landing_script');
+        }
+    }
+    public function daftarKelas()
+    {
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->Pelajar_model->daftarKelas($email);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Masuk Kelas</div>');
+        redirect('home/evaluasi');
+
+    }
+    /* End Of Evaluasi */
+
+    /* Materi */
     public function materi()
     {
         $email = $this->session->userdata('email');
@@ -129,17 +171,7 @@ class Home extends CI_Controller
         $this->load->view('templates/amalan_header');
         $this->load->view('home/materi');
         $this->load->view('templates/landing_script');
+    }
+    /* End of Materi */
 
-    }
-    public function pose()
-    {
-        $this->load->view('templates/pose');
-    }
-    public function sholatPose()
-    {
-        $email = $this->session->userdata('email');
-        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('home/praktikum/sholat_pose');
-    }
 }
