@@ -192,7 +192,7 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <img class="img-fluid" alt="Responsive image" src="<?=base_url('assets/img/pelajar/praktikum/sholat/');?>sholat.png" alt="" class="rounded">
+        <img class="img-fluid" alt="Responsive image" src="<?=base_url('assets/img/pelajar/praktikum/sholat/');?>sholat.jpg" alt="" class="rounded">
 
 		<!-- Pose Classification -->
 		<div class="container">
