@@ -25,56 +25,8 @@ class Data extends CI_Controller
         $this->load->view('data/index', $data);
         $this->load->view('templates/user_footer');
     }
-    public function anggota($departemen)
-    {
-        $data['title'] = 'Data Anggota';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        if ($departemen == 'SPK') {
-            $data['anggota'] = $this->Admin_model->getAnggotaSPK();
-        } else if ($departemen == 'MSI') {
-            $data['anggota'] = $this->Admin_model->getAnggotaMSI();
-        } else if ($departemen == 'BUD') {
-            $data['anggota'] = $this->Admin_model->getAnggotaBUD();
-        } else if ($departemen == 'KEMUSLIMAHAN') {
-            $data['anggota'] = $this->Admin_model->getAnggotaKEMUS();
-        } else {
-            $data['anggota'] = $this->Admin_model->getAnggota();
-        }
 
 
-        $data['departemen'] = ['', 'SPK', 'KPSDM', 'MSI', 'BUD', 'Kemuslimahan'];
-        $data['status'] = ['', 'AKTIF', 'SEMI AKTIF', 'TIDAK AKTIF'];
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
-        $this->load->view('data/anggota', $data);
-        $this->load->view('templates/user_footer');
-    }
-    public function tmbhAnggota()
-    {
-        $data['title'] = 'Data Anggota';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules('nim', 'NIM', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('departemen', 'Departemen', 'required');
-        $this->form_validation->set_rules('angkatan', 'Angkatan', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-
-        if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
-            $this->load->view('data/anggota', $data);
-            $this->load->view('templates/user_footer');
-        } else {
-            $this->Admin_model->input_anggota();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Anggota added</div>');
-            redirect('data/anggota');
-        }
-    }
     public function edit($id)
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
@@ -101,13 +53,6 @@ class Data extends CI_Controller
     {
         $this->Admin_model->hapusUser($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Delete User Success</div>');
-        redirect('data');
-    }
-
-    public function hapusAnggota($id)
-    {
-        $this->Admin_model->hapusAnggota($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Delete Anggota Success</div>');
-        redirect('data/anggota');
+        redirect('data/user');
     }
 }

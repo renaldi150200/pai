@@ -2,43 +2,43 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?=$title;?></h1>
-    <?php if (validation_errors()): ?>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <?php if (validation_errors()) : ?>
         <div class="alert alert-danger">Masih ada form yang belum diisi</div>
-    <?php endif;?>
+    <?php endif; ?>
     <div class="row">
         <div class="col-lg">
-            <?=$this->session->flashdata('message');?>
+            <?= $this->session->flashdata('message'); ?>
             <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#exampleModal">Add New Anggota</button>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">email</th>
+                        <th scope="col">NIM</th>
                         <th scope="col">NAMA</th>
-                        <th scope="col">Fakultas</th>
+                        <th scope="col">Departemen</th>
                         <th scope="col">Angkatan</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1;?>
-                    <?php foreach ($anggota as $sm): ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($anggota as $sm) : ?>
                         <tr>
-                            <th scope="row"><?=$i;?></th>
-                            <td><?=$sm['email']?></td>
-                            <td><?=$sm['nama']?></td>
-                            <td><?=$sm['departemen']?></td>
-                            <td><?=$sm['angkatan']?></td>
-                            <td><?=$sm['status']?></td>
+                            <th scope="row"><?= $i; ?></th>
+                            <td><?= $sm['nim'] ?></td>
+                            <td><?= $sm['nama'] ?></td>
+                            <td><?= $sm['departemen'] ?></td>
+                            <td><?= $sm['angkatan'] ?></td>
+                            <td><?= $sm['status'] ?></td>
                             <td>
-                                <a href="<?=base_url('data/editAnggota/')?><?=$sm['id'];?>" class="badge badge-success">edit</a>
-                                <a href="<?=base_url('data/hapusAnggota/')?><?=$sm['id'];?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a>
+                                <a href="<?= base_url('data/editAnggota/') ?><?= $sm['id']; ?>" class="badge badge-success">edit</a>
+                                <a href="<?= base_url('data/hapusAnggota/') ?><?= $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a>
                             </td>
                         </tr>
-                        <?php $i++;?>
-                    <?php endforeach;?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
@@ -58,27 +58,27 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?=base_url('data/tmbhAnggota');?>" method="post">
+            <form action="<?= base_url('data/tmbhAnggota'); ?>" method="post">
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                            <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
                         </div>
                         <div class="form-group">
                             <select name="departemen" id="departemen" class="form-control">
-                                <?php foreach ($departemen as $m): ?>
-                                    <option value="<?=$m;?>"><?=$m;?></option>
-                                <?php endforeach;?>
+                                <?php foreach ($departemen as $m) : ?>
+                                    <option value="<?= $m; ?>"><?= $m; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <select name="status" id="status" class="form-control">
-                                <?php foreach ($status as $s): ?>
-                                    <option value="<?=$s;?>"><?=$s;?></option>
-                                <?php endforeach;?>
+                                <?php foreach ($status as $s) : ?>
+                                    <option value="<?= $s; ?>"><?= $s; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
