@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="icon" href="<?= base_url('assets/img/pelajar/home/'); ?>pai.png">
 </head>
 
 <body id="page-top">
@@ -39,9 +39,9 @@
                     <!-- 404 Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="403">403</div>
-                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                        <p class="lead text-gray-800 mb-5">Halaan Tidak Temukan</p>
                         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="<?= base_url('user') ?>" class="card-link">&larr; Back to Dashboard</a>
+                        <a href="<?= base_url('') ?>" class="card-link">&larr; Kembali ke Halaman Utama</a>
                     </div>
 
                 </div>

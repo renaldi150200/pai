@@ -24,6 +24,14 @@ function is_logged_in()
     }
 }
 
+function is_logged_in_mahasiswa()
+{
+    $ci = get_instance();
+    if (!$ci->session->userdata('email')) {
+        redirect('landing/login');
+    }
+}
+
 function check_access($role_id, $menu_id)
 {
     $ci = get_instance();

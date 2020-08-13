@@ -7,7 +7,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        is_logged_in();
+        is_logged_in_mahasiswa();
         $this->load->model('Kelas_model');
         $this->load->model('Pelajar_model');
     }
@@ -34,7 +34,6 @@ class Home extends CI_Controller
         $this->load->view('home/amalan');
         $this->load->view('templates/home_footer');
         $this->load->view('templates/landing_script');
-
     }
 
     public function amalanPekanan()
@@ -57,7 +56,6 @@ class Home extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Pekanan Berhasil Di Update</div>');
             redirect('home/amalan');
         }
-
     }
     /* End  Absensi Amalan Yaumiyah */
 
@@ -116,7 +114,6 @@ class Home extends CI_Controller
             $kode_kelas = $kode[0]['kode_kelas'];
 
             $data['data_kelas'] = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
-
         }
         $this->load->view('templates/amalan_header', $data);
         $this->load->view('home/evaluasi', $data);
@@ -157,7 +154,6 @@ class Home extends CI_Controller
         $this->Pelajar_model->daftarKelas($email);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Masuk Kelas</div>');
         redirect('home/evaluasi');
-
     }
     /* End Of Evaluasi */
 
@@ -173,5 +169,4 @@ class Home extends CI_Controller
         $this->load->view('templates/landing_script');
     }
     /* End of Materi */
-
 }

@@ -112,7 +112,7 @@ class Auth extends CI_Controller
     public function registration()
     {
         if ($this->session->userdata('email')) {
-            redirect('user');
+            redirect('home');
         }
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('role_nama', 'Role Nama', 'required');
