@@ -21,6 +21,35 @@
                             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control-input" id="snim" name="nim" value="<?= set_value('nim') ?>">
+                            <label class="label-control" for="snim">NIM</label>
+                            <div class="help-block with-errors"></div>
+                            <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 mt-1"><span class="font-weight-bold mb-1 float-left">Fakultas</span> </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <select class="custom-select " id="fakultas" name="fakultas">
+                                        <option value="feb">Fakultas Ekonomi dan Bisnis</option>
+                                        <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
+                                        <option value="faperta">Fakultas Pertanian</option>
+                                        <option value="fahutan">Fakultas Kehutanan</option>
+                                        <option value="fkip">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                                        <option value="fpik">Fakultas Perikanan dan Ilmu Kelautan</option>
+                                        <option value="fh">Fakultas Hukum</option>
+                                        <option value="fmipa">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
+                                        <option value="ft">Fakultas Teknik</option>
+                                        <option value="fk">Fakultas Kedokteran</option>
+                                        <option value="kesmas">Fakultas Kesehatan Masyarakat</option>
+                                        <option value="farmasi">Fakultas Farmasi</option>
+                                        <option value="fib">Fakultas Ilmu Budaya</option>
+                                    </select>
+                                    <?= form_error('fakultas', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <input type="password" class="form-control-input" id="spassword" name="password1" value="<?= set_value('password1') ?>">
                             <label class="label-control" for="spassword">Password</label>
                             <div class="help-block with-errors"></div>

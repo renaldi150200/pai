@@ -77,22 +77,31 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $mahasiswa = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
 
-        if ($user) {
+        if ($user || $mahasiswa) {
 
-            if ($user['is_active'] == 1) {
-                if (password_verify($password, $user['password'])) {
+            if ($user['is_active'] == 1 || $mahasiswa['is_active'] == 1) {
+                if (password_verify($password, $user['password']) || password_verify($password, $mahasiswa['password'])) {
 
-                    $data = [
-                        'email' => $user['email'],
-                        'role_id' => $user['role_id'],
-                    ];
+                    if ($user) {
+                        $data = [
+                            'email' => $user['email'],
+                            'role_id' => $user['role_id'],
+                        ];
+                    } elseif ($mahasiswa) {
+                        $data = [
+                            'email' => $mahasiswa['email'],
+                            'role_id' => $mahasiswa['role_id'],
+                        ];
+                    }
+
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
                         redirect('admin_login/dashboard');
                     } elseif ($user['role_id'] == 2) {
                         redirect('user/myprofile');
-                    } elseif ($user['role_id'] == 3) {
+                    } elseif ($mahasiswa['role_id'] == 3 || $user['role_id'] == 3) {
                         redirect('home');
                     }
                 } else {
@@ -116,9 +125,28 @@ class Auth extends CI_Controller
         }
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('role_nama', 'Role Nama', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email has already registered!',
-        ]);
+
+        // Kondisi user role pelajar dan pengajar
+        if ($this->input->post('role_nama') == 'pelajar') {
+
+            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[mahasiswa.email]|is_unique[user.email]', [
+                'is_unique' => 'Email ini sudah terdaftar!',
+            ]);
+            $this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[mahasiswa.nim]', [
+                'is_unique' => 'NIM ini sudah terdaftar!',
+            ]);
+        } else if ($this->input->post('role_nama') == 'pengajar') {
+
+            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]|is_unique[mahasiswa.email]', [
+                'is_unique' => 'Email ini sudah terdaftar!',
+            ]);
+            $this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[user.nim_pengajar]', [
+                'is_unique' => 'NIM ini sudah terdaftar!',
+            ]);
+        }
+
+        $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
+
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
             'matches' => 'Password dont match!',
             'min_length' => 'Password to short!',
@@ -126,12 +154,17 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'User Registration';
             $this->load->view('templates/landing_header');
             $this->load->view('landing/sign-up');
             $this->load->view('templates/landing_script');
         } else {
-            $this->Mahasiswa_model->input_data();
+            if ($this->input->post('role_nama') == 'pelajar') {
+
+                $this->Mahasiswa_model->input_data_pelajar();
+            } else if ($this->input->post('role_nama') == 'pengajar') {
+
+                $this->Mahasiswa_model->input_data_pengajar();
+            }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
             redirect('landing/login');
         }
