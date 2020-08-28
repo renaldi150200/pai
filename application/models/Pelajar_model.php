@@ -3,49 +3,34 @@
 class Pelajar_model extends CI_Model
 {
 
-    public function input_amalanPekanan($email)
+    public function input_amalanPekanan($id_mahasiswa, $id_kelas)
     {
-        function tanggal_indo($tanggal, $cetak_hari = false)
-        {
-            $hari = array(1 => 'Senin',
-                'Selasa',
-                'Rabu',
-                'Kamis',
-                'Jumat',
-                'Sabtu',
-                'Minggu',
-            );
-
-            $bulan = array(1 => 'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
-            );
-            $split = explode('-', $tanggal);
-            $tgl_indo = $split[2] . ' ' . $bulan[(int) $split[1]] . ' ' . $split[0];
-
-            if ($cetak_hari) {
-                $num = date('N', strtotime($tanggal));
-                return $hari[$num] . ', ' . $tgl_indo;
-            }
-            return $tgl_indo;
-        }
         $tanggal = date('Y-m-d');
-        $tanggal_sekarang = tanggal_indo($tanggal, true);
 
         $data = [
-            'email' => htmlspecialchars($email),
-            'puasa_sunnah' => htmlspecialchars($this->input->post('shaumSunnah', true)),
-            'ket_puasa_sunnah' => htmlspecialchars($this->input->post('ket_shaumSunnah', true)),
-            'date' => htmlspecialchars($tanggal_sekarang),
+            'id_mahasiswa' => htmlspecialchars($id_mahasiswa),
+            'id_kelas' => htmlspecialchars($id_kelas),
+            // 'puasa_sunnah' => htmlspecialchars($this->input->post('shaumSunnah', true)),
+            // 'ket_puasa_sunnah' => htmlspecialchars($this->input->post('ket_shaumSunnah', true)),
+            'shalatWajib' => htmlspecialchars($this->input->post('shalatWajib', true)),
+            'ket_shalatWajib' => htmlspecialchars($this->input->post('ket_shalatWajib', true)),
+            'shalatTahajjud' => htmlspecialchars($this->input->post('shalatTahajjud', true)),
+            'ket_shalatTahajjud' => htmlspecialchars($this->input->post('ket_shalatTahajjud', true)),
+            'shalatDhuha' => htmlspecialchars($this->input->post('shalatDhuha', true)),
+            'ket_shalatDhuha' => htmlspecialchars($this->input->post('ket_shalatDhuha', true)),
+            'dzikirPagi' => htmlspecialchars($this->input->post('dzikirPagi', true)),
+            'ket_dzikirPagi' => htmlspecialchars($this->input->post('ket_dzikirPagi', true)),
+            'dzikirPetang' => htmlspecialchars($this->input->post('dzikirPetang', true)),
+            'ket_dzikirPetang' => htmlspecialchars($this->input->post('ket_dzikirPetang', true)),
+            'tilawah' => htmlspecialchars($this->input->post('tilawah', true)),
+            'ket_tilawah' => htmlspecialchars($this->input->post('ket_tilawah', true)),
+            'istighfar' => htmlspecialchars($this->input->post('istighfar', true)),
+            'ket_istighfar' => htmlspecialchars($this->input->post('ket_istighfar', true)),
+            'birulWalidain' => htmlspecialchars($this->input->post('birulWalidain', true)),
+            'ket_birulWalidain' => htmlspecialchars($this->input->post('ket_birulWalidain', true)),
+            'nontonKajian' => htmlspecialchars($this->input->post('menontonKajian', true)),
+            'ket_nontonKajian' => htmlspecialchars($this->input->post('ket_menontonKajian', true)),
+            'date' => htmlspecialchars($tanggal),
         ];
 
         $this->db->insert('amalan_yaumiyah', $data);
@@ -56,7 +41,7 @@ class Pelajar_model extends CI_Model
         $pelajar = 'Pelajar';
         $data = [
             'email' => htmlspecialchars($email),
-            'kode_kelas' => htmlspecialchars($this->input->post('kode_kelas', true)),
+            'id_kelas' => htmlspecialchars($this->input->post('id_kelas', true)),
             'role_nama' => htmlspecialchars($pelajar),
         ];
 

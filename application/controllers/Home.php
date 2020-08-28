@@ -12,6 +12,7 @@ class Home extends CI_Controller
         $this->load->model('Pelajar_model');
     }
 
+
     public function index()
     {
         $data['email'] = $this->session->userdata('email');
@@ -26,24 +27,122 @@ class Home extends CI_Controller
     /* Absensi Amalan Yaumiyah */
     public function amalan()
     {
+        function tanggal_indo($tanggal, $cetak_hari = false)
+        {
+            $hari = array(
+                1 => 'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                'Jumat',
+                'Sabtu',
+                'Minggu',
+            );
+
+            $bulan = array(
+                1 => 'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember',
+            );
+            $split = explode('-', $tanggal);
+            $tgl_indo = $split[2] . ' ' . $bulan[(int) $split[1]] . ' ' . $split[0];
+
+            if ($cetak_hari) {
+                $num = date('N', strtotime($tanggal));
+                return $hari[$num] . ', ' . $tgl_indo;
+            }
+            return $tgl_indo;
+        }
+
+
+
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $tanggal = date('Y-m-d');
+        $data['tanggal'] = tanggal_indo($tanggal, true);
         $this->load->view('templates/amalan_header');
-        $this->load->view('home/amalan');
+        $this->load->view('home/amalan', $data);
         $this->load->view('templates/home_footer');
         $this->load->view('templates/landing_script');
     }
 
     public function amalanPekanan()
     {
+        function tanggal_($tanggal, $cetak_hari = false)
+        {
+            $hari = array(
+                1 => 'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                'Jumat',
+                'Sabtu',
+                'Minggu',
+            );
+
+            $bulan = array(
+                1 => 'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember',
+            );
+            $split = explode('-', $tanggal);
+            $tgl_indo = $split[2] . ' ' . $bulan[(int) $split[1]] . ' ' . $split[0];
+
+            if ($cetak_hari) {
+                $num = date('N', strtotime($tanggal));
+                return $hari[$num] . ', ' . $tgl_indo;
+            }
+            return $tgl_indo;
+        }
+        $tanggal = date('Y-m-d');
+        $tanggal_ini = tanggal_($tanggal, true);
+        $data['tanggal'] = tanggal_($tanggal, true);
+
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $this->form_validation->set_rules('shaumSunnah', 'Shaum Sunnah', 'required');
-        $this->form_validation->set_rules('ket_shaumSunnah', 'Keterangan Shaum Sunnah', 'required');
+        $id = $this->db->query("SELECT id FROM mahasiswa
+            WHERE email='" . $email . "'")->result_array();
+
+        $id_mahasiswa = $id[0]['id'];
+
+        $idkelas = $this->db->query("SELECT kode_kelas FROM anggota_kelas
+            WHERE email='" . $email . "'")->result_array();
+
+        $id_kelas = $idkelas[0]['kode_kelas'];
+
+        // $this->form_validation->set_rules('shaumSunnah', 'Shaum Sunnah', 'required');
+        // $this->form_validation->set_rules('ket_shaumSunnah', 'Keterangan Shaum Sunnah', 'required');
+        $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required');
+        $this->form_validation->set_rules('shalatTahajjud', 'Shalat Tahajjud', 'required');
+        $this->form_validation->set_rules('shalatDhuha', 'Shalat Dhuha', 'required');
+        $this->form_validation->set_rules('dzikirPagi', 'Dzikir Pagi', 'required');
+        $this->form_validation->set_rules('dzikirPetang', 'Dzikir Petang', 'required');
+        $this->form_validation->set_rules('tilawah', 'Tilawah', 'required');
+        $this->form_validation->set_rules('istighfar', 'Istighfar', 'required');
+        $this->form_validation->set_rules('birulWalidain', 'Birul Walidain', 'required');
+        $this->form_validation->set_rules('menontonKajian', 'Menonton Kajian', 'required');
 
         if ($this->form_validation->run() == false) {
 
@@ -52,9 +151,22 @@ class Home extends CI_Controller
             $this->load->view('templates/home_footer');
             $this->load->view('templates/landing_script');
         } else {
-            $this->Pelajar_model->input_amalanPekanan($email);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Pekanan Berhasil Di Update</div>');
-            redirect('home/amalan');
+            $amalanHarian = $this->db->query("SELECT * FROM amalan_yaumiyah
+            WHERE id_mahasiswa='" . $id_mahasiswa . "' AND date = '" . $tanggal . "'")->result_array();
+
+            if (!$amalanHarian) {
+
+                $this->Pelajar_model->input_amalanPekanan($id_mahasiswa, $id_kelas);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Harian Berhasil Di Update</div>');
+                redirect('home/amalan');
+            } else {
+                // $this->load->view('templates/amalan_header');
+                // $this->load->view('home/amalan', $data);
+                // $this->load->view('templates/home_footer');
+                // $this->load->view('templates/landing_script');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Sudah Mengisi Amalan Yaumiyah</div>');
+                redirect('home/amalan');
+            }
         }
     }
     /* End  Absensi Amalan Yaumiyah */
@@ -108,12 +220,13 @@ class Home extends CI_Controller
         } else {
             $data['anggota'] = 'true';
 
-            $kode = $this->db->query("SELECT kode_kelas FROM anggota_kelas
-            WHERE email='" . $email . "'")->result_array();
+            $kode = $this->db->query("SELECT id_kelas FROM anggota_kelas WHERE email='" . $email . "'")->result_array();
+            $kode_kelas = $kode[0]['id_kelas'];
+            $email_pengajar = $this->db->query("SELECT email_pengajar FROM kelas WHERE id='" . $kode_kelas . "'")->result_array();
+            $email_mentor = $email_pengajar[0]['email_pengajar'];
 
-            $kode_kelas = $kode[0]['kode_kelas'];
-
-            $data['data_kelas'] = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
+            $data['data_kelas'] = $this->db->get_where('kelas', ['id' => $kode_kelas])->result_array();
+            $data['data_mentor'] =  $this->db->query("SELECT name FROM user WHERE email='" . $email_mentor . "'")->result_array();
         }
         $this->load->view('templates/amalan_header', $data);
         $this->load->view('home/evaluasi', $data);
@@ -125,7 +238,6 @@ class Home extends CI_Controller
     {
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $kode_kelas = $this->input->post('kode_kelas', true);
         $kelas = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
 
@@ -148,8 +260,7 @@ class Home extends CI_Controller
     public function daftarKelas()
     {
         $email = $this->session->userdata('email');
-        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['mahasiswa'] = $this->db->get_where('mahasiswa', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->Pelajar_model->daftarKelas($email);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Masuk Kelas</div>');
