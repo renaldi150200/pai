@@ -31,7 +31,7 @@ class Data extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Edit Menu Management';
+        $data['title'] = 'Edit User';
         $data['usr'] = $this->Admin_model->getUserById($id);
         $data['status'] = $this->Admin_model->getStatus();
 

@@ -14,7 +14,7 @@ class Kelas extends CI_Controller
     {
         $data['title'] = 'Profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
-            $this->session->userdata('email')])->row_array();
+        $this->session->userdata('email')])->row_array();
 
         $email = $this->session->userdata('email');
         $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
@@ -24,7 +24,7 @@ class Kelas extends CI_Controller
             $this->load->view('templates/user_header', $data);
             $this->load->view('templates/user_sidebar', $data);
             $this->load->view('templates/user_topbar', $data);
-            $this->load->view('user/myprofile', $data);
+            $this->load->view('kelompok/index', $data);
             $this->load->view('templates/user_footer');
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Kelas Gagal Dibuat!</strong>
@@ -40,8 +40,7 @@ class Kelas extends CI_Controller
               <span aria-hidden="true">&times;</span>
             </button>
           </div>');
-            redirect('user/myprofile');
+            redirect('kelompok');
         }
-
     }
 }

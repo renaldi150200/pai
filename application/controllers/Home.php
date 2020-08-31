@@ -222,9 +222,12 @@ class Home extends CI_Controller
 
             $kode = $this->db->query("SELECT id_kelas FROM anggota_kelas WHERE email='" . $email . "'")->result_array();
             $kode_kelas = $kode[0]['id_kelas'];
+
             $email_pengajar = $this->db->query("SELECT email_pengajar FROM kelas WHERE id='" . $kode_kelas . "'")->result_array();
             $email_mentor = $email_pengajar[0]['email_pengajar'];
 
+
+            $data['data_pengumuman'] = $this->db->get_where('pengumuman', ['id_kelas' => $kode_kelas])->result_array();
             $data['data_kelas'] = $this->db->get_where('kelas', ['id' => $kode_kelas])->result_array();
             $data['data_mentor'] =  $this->db->query("SELECT name FROM user WHERE email='" . $email_mentor . "'")->result_array();
         }

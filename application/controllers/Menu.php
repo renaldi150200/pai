@@ -10,7 +10,7 @@ class Menu extends CI_Controller
         $this->load->model('Menu_model');
     }
 
-    public function menu()
+    public function index()
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
