@@ -6,7 +6,7 @@
 
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-10">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
             <?= $this->session->flashdata('message'); ?>
             <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#exampleModal">Tambah Pengumuman</button>
@@ -16,7 +16,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Jenis</th>
                         <th scope="col">Kelas</th>
-                        <th scope="col">Tanggal</th>
+                        <th scope="col">Tanggal dan Jam Mulai</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -24,10 +24,13 @@
                     <?php $i = 1; ?>
                     <?php foreach ($pengumuman as $pengumuman_) : ?>
                         <tr>
+                            <?php
+                            $time = substr($pengumuman_['date'], 11, 5);
+                            ?>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $pengumuman_['jenis'] ?></td>
                             <td><?= $pengumuman_['nama_kelas'] ?></td>
-                            <td><?= $pengumuman_['date'] ?></td>
+                            <td><?= indonesian_date($pengumuman_['date'], 'l, d F Y') . $time; ?></td>
                             <td>
                                 <a href="<?= base_url('pengumuman/edit/') ?><?= $pengumuman_['id']; ?>" class="badge badge-success">edit</a>
                                 <a href="<?= base_url('pengumuman/hapus/') ?><?= $pengumuman_['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a>
@@ -87,16 +90,28 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="link" placeholder="Link">
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-12">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Tanggal</label>
                                 <input type="date" class="form-control" id="exampleFormControlInput1" name="tanggal">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-lg-2 pt-lg-4 ">
+                            <p class="mt-lg-2 ml-lg-4 font-weight-bold">Dari</p>
+                        </div>
+                        <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Jam</label>
                                 <input type="time" class="form-control" id="exampleFormControlInput1" name="jam">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-2 pt-lg-4 ">
+                            <p class="mt-lg-2 ml-lg-4 font-weight-bold">Sampai</p>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Jam Expired</label>
+                                <input type="time" class="form-control" id="exampleFormControlInput1" name="jam_expired">
                             </div>
                         </div>
                     </div>

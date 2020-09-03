@@ -54,14 +54,17 @@ class Kelas_model extends CI_Model
     {
         $tanggal = $this->input->post('tanggal', true);
         $jam = $this->input->post('jam', true);
+        $jam_ex = $this->input->post('jam_expired', true);
         $date = $tanggal . ' ' . $jam . ':00';
+        $date_expired = $tanggal . ' ' . $jam_ex . ':00';
         $id = $this->input->post('id', true);
         $data = array(
             'jenis' => $this->input->post('jenis', true),
             'id_kelas' => $this->input->post('kelas', true),
             'link' => $this->input->post('link', true),
             'deskripsi' => $this->input->post('deskripsi', true),
-            'date' => $date
+            'date' => $date,
+            'date_expired' => $date_expired
         );
         $this->db->where('id', $id);
         return $this->db->update('pengumuman', $data);
@@ -71,13 +74,16 @@ class Kelas_model extends CI_Model
     {
         $tanggal = $this->input->post('tanggal', true);
         $jam = $this->input->post('jam', true);
+        $jam_ex = $this->input->post('jam_expired', true);
         $date = $tanggal . ' ' . $jam . ':00';
+        $jam_expired = $tanggal . ' ' . $jam_ex . ':00';
 
         $data = [
             'jenis' => htmlspecialchars($this->input->post('jenis', true)),
             'id_kelas' => htmlspecialchars($this->input->post('kelas', true)),
             'link' => htmlspecialchars($this->input->post('link', true)),
             'date' => htmlspecialchars($date),
+            'date_expired' => htmlspecialchars($jam_expired),
             'email_pengajar' => htmlspecialchars($email),
             'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
 

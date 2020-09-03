@@ -54,6 +54,7 @@
 
                         <?php endforeach; ?>
                     </select>
+                    <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
                     <label for="exampleFormControlInput1" class="col-sm-1 col-form-label">Link</label>
@@ -65,18 +66,34 @@
 
                 $tanggal = substr($pengumuman['date'], 0, 10);
                 $time = substr($pengumuman['date'], 11, 5);
+                $time_expired = substr($pengumuman['date_expired'], 11, 5);
                 ?>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Tanggal</label>
                             <input type="date" class="form-control" id="exampleFormControlInput1" name="tanggal" value="<?= $tanggal ?>">
+                            <?= form_error('date', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-lg-2 pt-lg-4 ">
+                        <p class="mt-lg-2 ml-lg-4 font-weight-bold">Dari</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Jam</label>
                             <input type="time" class="form-control" id="exampleFormControlInput1" name="jam" value="<?= $time ?>">
+                            <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 pt-lg-4 ">
+                        <p class="mt-lg-2 ml-lg-4 font-weight-bold">Sampai</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Jam Expired</label>
+                            <input type="time" class="form-control" id="exampleFormControlInput1" name="jam_expired" value="<?= $time_expired ?>">
+                            <?= form_error('jam_expired', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>
@@ -85,6 +102,7 @@
                     <label for="exampleFormControlTextarea1">Deksripsi</label>
                     <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" style="display: none;"></textarea>
                     <textarea class="form-control" id="userFied" rows="3"></textarea>
+                    <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                     <!-- Script untuk multi line -->
                     <script>
                         function addNewLine() {

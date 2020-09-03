@@ -27,9 +27,11 @@ class Pengumuman extends CI_Controller
         $this->form_validation->set_rules('link', 'link', 'required');
         $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
         $this->form_validation->set_rules('jam', 'jam', 'required');
+        $this->form_validation->set_rules('jam_expired', 'jam_expired', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
 
         if ($this->form_validation->run() == false) {
+            $this->load->view('templates/format_tanggal');
             $this->load->view('templates/user_header', $data);
             $this->load->view('templates/user_sidebar', $data);
             $this->load->view('templates/user_topbar', $data);
@@ -51,12 +53,13 @@ class Pengumuman extends CI_Controller
         $data['id_kelas'] = $this->Kelas_model->getKelas($email);
         $data['pengumuman'] = $this->Kelas_model->getPengumumanById($id);
 
-        // $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-        // $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-        // $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
-        // $this->form_validation->set_rules('jam', 'jam', 'required');
-        // $this->form_validation->set_rules('link', 'link', 'required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+        $this->form_validation->set_rules('jam', 'jam', 'required');
+        $this->form_validation->set_rules('jam_expired', 'jam_expired', 'required');
+        $this->form_validation->set_rules('link', 'link', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/user_header', $data);
