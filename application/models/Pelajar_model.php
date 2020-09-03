@@ -36,15 +36,14 @@ class Pelajar_model extends CI_Model
         $this->db->insert('amalan_yaumiyah', $data);
     }
 
-    public function daftarKelas($email)
+    public function daftarKelas($id_mahasiswa)
     {
-        $pelajar = 'Pelajar';
         $data = [
-            'email' => htmlspecialchars($email),
-            'id_kelas' => htmlspecialchars($this->input->post('id_kelas', true)),
-            'role_nama' => htmlspecialchars($pelajar),
+            'id_mahasiswa' => htmlspecialchars($id_mahasiswa),
+            'id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))
         ];
 
         $this->db->insert('anggota_kelas', $data);
+        $this->db->insert('absen', $data);
     }
 }

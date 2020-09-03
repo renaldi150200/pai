@@ -213,14 +213,16 @@ class Home extends CI_Controller
     {
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
-        $anggota = $this->db->get_where('anggota_kelas', ['email' => $email])->result_array();
+        $id_mhs = $this->db->query("SELECT id FROM mahasiswa WHERE email='" . $email . "'")->result_array();
+        $id_mahasiswa = $id_mhs[0]['id'];
+        $anggota = $this->db->get_where('anggota_kelas', ['id_mahasiswa' => $id_mahasiswa])->result_array();
 
         if (!$anggota) {
             $data['anggota'] = 'false';
         } else {
             $data['anggota'] = 'true';
 
-            $kode = $this->db->query("SELECT id_kelas FROM anggota_kelas WHERE email='" . $email . "'")->result_array();
+            $kode = $this->db->query("SELECT id_kelas FROM anggota_kelas WHERE id_mahasiswa='" . $id_mahasiswa . "'")->result_array();
             $kode_kelas = $kode[0]['id_kelas'];
 
             $email_pengajar = $this->db->query("SELECT email_pengajar FROM kelas WHERE id='" . $kode_kelas . "'")->result_array();
@@ -264,8 +266,9 @@ class Home extends CI_Controller
     {
         $email = $this->session->userdata('email');
         $data['mahasiswa'] = $this->db->get_where('mahasiswa', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->Pelajar_model->daftarKelas($email);
+        $id_mhs = $this->db->query("SELECT id FROM mahasiswa WHERE email='" . $email . "'")->result_array();
+        $id_mahasiswa = $id_mhs[0]['id'];
+        $this->Pelajar_model->daftarKelas($id_mahasiswa);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Masuk Kelas</div>');
         redirect('home/evaluasi');
     }
