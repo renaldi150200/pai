@@ -7,9 +7,12 @@ if ($anggota == 'true') {
 
   <div style="margin-top:100px;"></div>
   <div class="container">
-    <!-- <?php foreach ($data_kelas as $class) : ?>
+    <?php foreach ($data_kelas as $class) : ?>
 
-    <?php endforeach; ?> -->
+    <?php endforeach; ?>
+    <?php foreach ($data_absen as $absen) : ?>
+
+    <?php endforeach; ?>
 
     <!-- Card Kelas -->
     <div class="card w-100 mb-3" style="background-color: #1ABF9B; box-shadow: 1px 1px 8px #383A3F;">
@@ -25,7 +28,7 @@ if ($anggota == 'true') {
     <?php foreach ($data_pengumuman as $pengumuman) : ?>
 
 
-      <div class="card w-100" style="box-shadow: 1px 1px 8px #383A3F;">
+      <div class="card w-100 mb-4" style="box-shadow: 1px 1px 8px #383A3F;">
         <div class="card-body">
           <div class="row mb-3">
             <div class="col-md-1 col-2">
@@ -50,7 +53,23 @@ if ($anggota == 'true') {
           ?>
           <p class="card-text font-weight-bold mb-1"><?= $deskripsi ?></p>
           <a href="" style="text-decoration: underline; color:blue;"><?= $pengumuman['link']; ?></a><br>
-          <a class="square_btn font-weight-bold mt-1">Absen</a>
+          <form method="post" action="">
+
+            <?php
+            if ($pengumuman['jenis'] == 'pertemuan') {
+
+              $pertemuan = 'pertemuan_' . $pengumuman['pertemuan_ke'];
+              if ($absen[$pertemuan] == 1) {
+                echo  '<button type="submit" class="btn btn-success mt-1" disabled>Sudah Absen</button>';
+              } else {
+            ?><input type="text" name="absen" value="<?= $pengumuman['pertemuan_ke']; ?>" hidden>
+            <?php
+                button_absen($pengumuman['date'], $pengumuman['date_expired']);
+              }
+            }
+
+            ?>
+          </form>
         </div>
       </div>
     <?php endforeach; ?>

@@ -46,4 +46,13 @@ class Pelajar_model extends CI_Model
         $this->db->insert('anggota_kelas', $data);
         $this->db->insert('absen', $data);
     }
+
+    public function update_absen($id_mahasiswa)
+    {
+        $absen = $this->input->post('absen');
+        $pertemuan = 'pertemuan_' . $absen;
+        $this->db->set($pertemuan, '1');
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        return $this->db->update('absen');
+    }
 }

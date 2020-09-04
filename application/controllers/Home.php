@@ -160,10 +160,6 @@ class Home extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Harian Berhasil Di Update</div>');
                 redirect('home/amalan');
             } else {
-                // $this->load->view('templates/amalan_header');
-                // $this->load->view('home/amalan', $data);
-                // $this->load->view('templates/home_footer');
-                // $this->load->view('templates/landing_script');
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Sudah Mengisi Amalan Yaumiyah</div>');
                 redirect('home/amalan');
             }
@@ -231,12 +227,23 @@ class Home extends CI_Controller
 
             $data['data_pengumuman'] = $this->db->get_where('pengumuman', ['id_kelas' => $kode_kelas])->result_array();
             $data['data_kelas'] = $this->db->get_where('kelas', ['id' => $kode_kelas])->result_array();
+            $data['data_absen'] = $this->db->get_where('absen', ['id_mahasiswa' => $id_mahasiswa])->result_array();
             $data['data_mentor'] =  $this->db->query("SELECT name FROM user WHERE email='" . $email_mentor . "'")->result_array();
         }
-        $this->load->view('templates/amalan_header', $data);
-        $this->load->view('home/evaluasi', $data);
-        $this->load->view('templates/home_footer');
-        $this->load->view('templates/landing_script');
+
+
+        $this->form_validation->set_rules('absen', 'absen', 'required');
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('templates/amalan_header', $data);
+            $this->load->view('templates/selisih_tanggal', $data);
+            $this->load->view('home/evaluasi', $data);
+            $this->load->view('templates/home_footer');
+            $this->load->view('templates/landing_script');
+        } else {
+            $this->Pelajar_model->update_absen($id_mahasiswa);
+            redirect('home/evaluasi');
+        }
     }
 
     public function cariKelas()
