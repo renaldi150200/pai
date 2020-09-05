@@ -52,7 +52,7 @@ if ($anggota == 'true') {
 
           ?>
           <p class="card-text font-weight-bold mb-1"><?= $deskripsi ?></p>
-          <a href="" style="text-decoration: underline; color:blue;"><?= $pengumuman['link']; ?></a><br>
+          <a href="<?= $pengumuman['link']; ?>" style="text-decoration: underline; color:blue;"><?= $pengumuman['link']; ?></a><br>
           <form method="post" action="">
 
             <?php

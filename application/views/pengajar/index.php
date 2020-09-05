@@ -9,6 +9,7 @@
                         <h5 class="card-title"><?= $class['nama_kelas']; ?></h5>
                         <p class="card-text"><?= $class['desc']; ?></p>
                         <p class="card-text"><small class="text-muted">Kode Kelas : <?= $class['kode_kelas']; ?></small></p>
+                        <a href="<?= base_url('kelompok/absen/') . $class['id']; ?>" class="btn btn-dark">Lihat Absen</a>
                     </div>
                 </div>
             </div>

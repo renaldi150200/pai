@@ -105,7 +105,7 @@ class Auth extends CI_Controller
                         redirect('home');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Salah Password!</div>');
                     redirect('landing/login');
                 }
             } else {
@@ -113,7 +113,7 @@ class Auth extends CI_Controller
                 redirect('landing/login');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email Anda Belum Terdaftar!</div>');
             redirect('landing/login');
         }
     }
@@ -165,7 +165,7 @@ class Auth extends CI_Controller
 
                 $this->Mahasiswa_model->input_data_pengajar();
             }
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! akun anda sudah jadi. Silahkan Login</div>');
             redirect('landing/login');
         }
     }
@@ -186,7 +186,7 @@ class Auth extends CI_Controller
     public function logoutAnggota()
     {
         $this->session->unset_userdata('email');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu berhasil Keluar!</div>');
         redirect('auth/absen');
     }
 
