@@ -34,9 +34,9 @@ class Landing extends CI_Controller
     }
     public function register()
     {
+        $data['fakultas'] = $this->db->query("SELECT * FROM fakultas ")->result_array();
         $this->load->view('templates/landing_header');
-        $this->load->view('landing/sign-up');
+        $this->load->view('landing/sign-up', $data);
         $this->load->view('templates/landing_script');
     }
-
 }

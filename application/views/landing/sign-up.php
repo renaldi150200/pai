@@ -31,19 +31,12 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <select class="custom-select " id="fakultas" name="fakultas">
-                                        <option value="feb">Fakultas Ekonomi dan Bisnis</option>
-                                        <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
-                                        <option value="faperta">Fakultas Pertanian</option>
-                                        <option value="fahutan">Fakultas Kehutanan</option>
-                                        <option value="fkip">Fakultas Keguruan dan Ilmu Pendidikan</option>
-                                        <option value="fpik">Fakultas Perikanan dan Ilmu Kelautan</option>
-                                        <option value="fh">Fakultas Hukum</option>
-                                        <option value="fmipa">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
-                                        <option value="ft">Fakultas Teknik</option>
-                                        <option value="fk">Fakultas Kedokteran</option>
-                                        <option value="kesmas">Fakultas Kesehatan Masyarakat</option>
-                                        <option value="farmasi">Fakultas Farmasi</option>
-                                        <option value="fib">Fakultas Ilmu Budaya</option>
+                                        <?php foreach ($fakultas as $fk) :
+                                        ?>
+                                            <option value="<?= $fk['id'] ?>"><?= $fk['nama_fakultas'] ?></option>
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </select>
                                     <?= form_error('fakultas', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
