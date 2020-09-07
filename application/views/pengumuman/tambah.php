@@ -64,8 +64,8 @@
                     <label for="exampleFormControlTextarea1">Deksripsi</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
                 </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
-            <button type="submit" class="btn btn-primary">Tambah</button>
         </div>
     </div>
 
