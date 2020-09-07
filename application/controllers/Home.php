@@ -134,15 +134,15 @@ class Home extends CI_Controller
 
         // $this->form_validation->set_rules('shaumSunnah', 'Shaum Sunnah', 'required');
         // $this->form_validation->set_rules('ket_shaumSunnah', 'Keterangan Shaum Sunnah', 'required');
-        $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required');
-        $this->form_validation->set_rules('shalatTahajjud', 'Shalat Tahajjud', 'required');
-        $this->form_validation->set_rules('shalatDhuha', 'Shalat Dhuha', 'required');
-        $this->form_validation->set_rules('dzikirPagi', 'Dzikir Pagi', 'required');
-        $this->form_validation->set_rules('dzikirPetang', 'Dzikir Petang', 'required');
-        $this->form_validation->set_rules('tilawah', 'Tilawah', 'required');
-        $this->form_validation->set_rules('istighfar', 'Istighfar', 'required');
-        $this->form_validation->set_rules('birulWalidain', 'Birul Walidain', 'required');
-        $this->form_validation->set_rules('menontonKajian', 'Menonton Kajian', 'required');
+        $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('shalatTahajjud', 'Shalat Tahajjud', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('shalatDhuha', 'Shalat Dhuha', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('dzikirPagi', 'Dzikir Pagi', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('dzikirPetang', 'Dzikir Petang', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('tilawah', 'Tilawah', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('istighfar', 'Istighfar', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('birulWalidain', 'Birul Walidain', 'required', ['required' => 'Wajib di isi']);
+        $this->form_validation->set_rules('menontonKajian', 'Menonton Kajian', 'required', ['required' => 'Wajib di isi']);
 
         if ($this->form_validation->run() == false) {
 
