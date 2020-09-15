@@ -168,8 +168,9 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/amalan'); ?>"><span class="list-nav">Absensi</span> </a>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="<?= base_url('home/amalan'); ?>"><span class="list-nav">Amalan Yaumiyah</span> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="<?= base_url('home/materi'); ?>"><span class="list-nav">Materi</span> </a>
@@ -179,8 +180,8 @@
                         <a class="nav-link page-scroll" href="<?= base_url('home'); ?>"><span class="list-nav">Praktikum</span> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/evaluasi'); ?>"><span class="list-nav">Evaluasi</span></a>
-                    </li>
+                        <a class="nav-link page-scroll" href="<?= base_url('home/evaluasi'); ?>"><span class="list-nav">Kelas</span></a>
+                    </li> -->
                 </ul>
                 <span class="nav-item">
                     <a class="btn-outline-sm " href="<?= base_url('auth/logout'); ?>">Keluar</a>

@@ -69,11 +69,7 @@
                         <a class="nav-link page-scroll" href="<?= base_url('') ?>">BERANDA <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#details">DETAIL</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#footer">TENTANG</a>
+                        <a class="nav-link page-scroll" href="<?= base_url('landing/register') ?>">DAFTAR</a>
                     </li>
                 </ul>
                 <span class="nav-item">

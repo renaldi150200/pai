@@ -12,18 +12,20 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('email')) {
-            redirect('user/myprofile');
-        }
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        // if ($this->session->userdata('email')) {
+        //     redirect('user/myprofile');
+        // }
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
+            'required' => 'Isi NIM terlebih dahulu',
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'trim|required', [
+            'required' => 'Isi Password terlebih dahulu',
+        ]);
 
         if ($this->form_validation->run() == false) {
-
-            $data['title'] = 'Login Page';
-            $this->load->view('templates/landing_header', $data);
-            $this->load->view('landing/login');
-            $this->load->view('templates/landing_footer');
+            $this->load->view('templates/landing_header_auth');
+            $this->load->view('landing/log-in');
+            $this->load->view('templates/landing_script');
         } else {
             $this->_login();
         }
@@ -123,25 +125,26 @@ class Auth extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('home');
         }
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $data['fakultas'] = $this->db->query("SELECT * FROM fakultas ")->result_array();
+        $this->form_validation->set_rules('name', 'Name', 'required|trim', ['required' => 'Nama Wajib diisi !']);
         $this->form_validation->set_rules('role_nama', 'Role Nama', 'required');
 
         // Kondisi user role pelajar dan pengajar
         if ($this->input->post('role_nama') == 'pelajar') {
 
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[mahasiswa.email]|is_unique[user.email]', [
-                'is_unique' => 'Email ini sudah terdaftar!',
+                'is_unique' => 'Email ini sudah terdaftar !', 'required' => 'Email Wajib diisi !'
             ]);
             $this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[mahasiswa.nim]', [
-                'is_unique' => 'NIM ini sudah terdaftar!',
+                'is_unique' => 'NIM ini sudah terdaftar !', 'required' => 'NIM Wajib diisi !'
             ]);
         } else if ($this->input->post('role_nama') == 'pengajar') {
 
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]|is_unique[mahasiswa.email]', [
-                'is_unique' => 'Email ini sudah terdaftar!',
+                'is_unique' => 'Email ini sudah terdaftar !', 'required' => 'Email Wajib diisi !'
             ]);
             $this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[user.nim_pengajar]', [
-                'is_unique' => 'NIM ini sudah terdaftar!',
+                'is_unique' => 'NIM ini sudah terdaftar !', 'required' => 'NIM Wajib diisi !'
             ]);
         }
 
@@ -150,12 +153,13 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
             'matches' => 'Password tidak  sama!',
             'min_length' => 'Password Minimal terdiri dari 6 huruf!',
+            'required' => 'Password Wajib diisi !'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/landing_header');
-            $this->load->view('landing/sign-up');
+            $this->load->view('templates/landing_header_auth');
+            $this->load->view('landing/sign-up', $data);
             $this->load->view('templates/landing_script');
         } else {
             if ($this->input->post('role_nama') == 'pelajar') {

@@ -21,7 +21,7 @@
                             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="snim" name="nim" value="<?= set_value('nim') ?>">
+                            <input type="text" class="form-control-input" id="snim" name="nim" onkeypress="return hanyaAngka(event)" value="<?= set_value('nim') ?>">
                             <label class="label-control" for="snim">NIM</label>
                             <div class="help-block with-errors"></div>
                             <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -58,8 +58,7 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <select class="custom-select " id="role_nama" name="role_nama">
-                                        <option value="pelajar">Pelajar</option>
-                                        <option value="pelajar">Umum</option>
+                                        <option value="pelajar">Mahasiswa</option>
                                         <option value="pengajar">Pengajar</option>
                                     </select>
                                     <?= form_error('role_nama', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -82,3 +81,12 @@
     </div> <!-- end of container -->
 </header> <!-- end of ex-header -->
 <!-- end of header -->
+<script>
+    function hanyaAngka(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+            return false;
+        return true;
+    }
+</script>
