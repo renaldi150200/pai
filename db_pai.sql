@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Sep 2020 pada 11.10
+-- Waktu pembuatan: 16 Sep 2020 pada 06.58
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -47,8 +47,9 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`id`, `id_kelas`, `id_mahasiswa`, `pertemuan_1`, `pertemuan_2`, `pertemuan_3`, `pertemuan_4`, `pertemuan_5`, `pertemuan_6`, `pertemuan_7`, `pertemuan_8`) VALUES
-(1, '4', '3', '1', '1', '', '', '', '', '', ''),
-(2, '4', '4', '', '1', '', '', '', '', '', '');
+(1, '4', '3', '1', '1', '1', '', '', '', '', ''),
+(2, '4', '4', '', '1', '', '', '', '', '', ''),
+(3, '4', '5', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -61,25 +62,8 @@ CREATE TABLE `amalan_yaumiyah` (
   `id_mahasiswa` varchar(50) NOT NULL,
   `id_kelas` varchar(7) NOT NULL,
   `shalatWajib` int(1) NOT NULL,
-  `ket_shalatWajib` varchar(50) NOT NULL,
-  `shalatTahajjud` int(1) NOT NULL,
-  `ket_shalatTahajjud` varchar(50) NOT NULL,
   `shalatDhuha` int(1) NOT NULL,
-  `ket_shalatDhuha` varchar(50) NOT NULL,
-  `dzikirPagi` int(1) NOT NULL,
-  `ket_dzikirPagi` varchar(50) NOT NULL,
-  `dzikirPetang` int(1) NOT NULL,
-  `ket_dzikirPetang` varchar(50) NOT NULL,
   `tilawah` int(1) NOT NULL,
-  `ket_tilawah` varchar(50) NOT NULL,
-  `istighfar` int(1) NOT NULL,
-  `ket_istighfar` varchar(50) NOT NULL,
-  `birulWalidain` int(1) NOT NULL,
-  `ket_birulWalidain` varchar(50) NOT NULL,
-  `nontonKajian` int(1) NOT NULL,
-  `ket_nontonKajian` varchar(50) NOT NULL,
-  `puasa_sunnah` int(1) NOT NULL,
-  `ket_puasa_sunnah` varchar(50) NOT NULL,
   `date` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,8 +71,8 @@ CREATE TABLE `amalan_yaumiyah` (
 -- Dumping data untuk tabel `amalan_yaumiyah`
 --
 
-INSERT INTO `amalan_yaumiyah` (`id`, `id_mahasiswa`, `id_kelas`, `shalatWajib`, `ket_shalatWajib`, `shalatTahajjud`, `ket_shalatTahajjud`, `shalatDhuha`, `ket_shalatDhuha`, `dzikirPagi`, `ket_dzikirPagi`, `dzikirPetang`, `ket_dzikirPetang`, `tilawah`, `ket_tilawah`, `istighfar`, `ket_istighfar`, `birulWalidain`, `ket_birulWalidain`, `nontonKajian`, `ket_nontonKajian`, `puasa_sunnah`, `ket_puasa_sunnah`, `date`) VALUES
-(6, '3', 'QVMGxa', 1, '', 1, '', 1, '', 1, '', 1, '', 1, '', 1, '', 0, '', 1, '', 0, '', '2020-08-28');
+INSERT INTO `amalan_yaumiyah` (`id`, `id_mahasiswa`, `id_kelas`, `shalatWajib`, `shalatDhuha`, `tilawah`, `date`) VALUES
+(8, '3', '4', 4, 6, 2, '2020-09-16');
 
 -- --------------------------------------------------------
 
@@ -108,7 +92,8 @@ CREATE TABLE `anggota_kelas` (
 
 INSERT INTO `anggota_kelas` (`id`, `id_mahasiswa`, `id_kelas`) VALUES
 (17, '3', '4'),
-(18, '4', '4');
+(18, '4', '4'),
+(19, '5', '4');
 
 -- --------------------------------------------------------
 
@@ -130,7 +115,7 @@ INSERT INTO `fakultas` (`id`, `nama_fakultas`) VALUES
 (2, 'Fakultas Ilmu Sosial dan Politik'),
 (3, 'Fakultas Pertanian'),
 (4, 'Fakultas Kehutanan'),
-(5, 'Fakultas Keguruan dan Ilmu Pendidikan'),
+(5, 'Fakultas Keguruan dan Ilmu Pendidikan (Base)'),
 (6, 'Fakultas Perikanan dan Ilmu Kelautan'),
 (7, 'Fakultas Hukum'),
 (8, 'Fakultas Matematika dan Ilmu Pengetahuan Alam'),
@@ -138,7 +123,9 @@ INSERT INTO `fakultas` (`id`, `nama_fakultas`) VALUES
 (10, 'Fakultas Kedokteran'),
 (11, 'Fakultas Kesehatan Masyarakat'),
 (12, 'Fakultas Farmasi'),
-(13, 'Fakultas Ilmu Budaya');
+(13, 'Fakultas Ilmu Budaya'),
+(14, 'Fakultas Keguruan dan Ilmu Pendidikan (Pahwlawan)'),
+(15, 'Fakultas Keguruan dan Ilmu Pendidikan (Banggeris)');
 
 -- --------------------------------------------------------
 
@@ -192,7 +179,9 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `nama`, `email`, `nim`, `id_fakultas`, `prodi`, `angkatan`, `ttl`, `alamat`, `no_telp`, `password`, `role_id`, `is_active`, `role_nama`) VALUES
 (2, 'Renaldi Panji Wibowo', 'renaaldi@gmail.com', '1915016223', '1', '', '', '', '', '', '$2y$10$YwemXFFCsimli63VxOc6POcuBegQRas.UENA3uNT/Yt6mkNy.o6pS', 3, 1, 'pelajar'),
 (3, 'Renaldi Panji Wibowo', 's@gmail.com', '1815025077', '12', '', '', '', '', '', '$2y$10$/pLy3xPPWbWFON3QzUJ9b./fOt9lDsYHEcZdapYVgTwRojsJSTiBK', 3, 1, 'pelajar'),
-(4, 'Surya Saputra', 'surya@gmail.com', '1815025099', '9', '', '', '', '', '', '$2y$10$jQuIB9jB7yazF1C2h77UW.xp9n..nzfVkbeMZQXsROhxiXR2sAAF6', 3, 1, 'pelajar');
+(4, 'Surya Saputra', 'surya@gmail.com', '1815025099', '9', '', '', '', '', '', '$2y$10$jQuIB9jB7yazF1C2h77UW.xp9n..nzfVkbeMZQXsROhxiXR2sAAF6', 3, 1, 'pelajar'),
+(5, 'Renaldi Panji Wibowo', 'r1815025078@gmail.com', '1815025079', '1', '', '', '', '', '', '$2y$10$kYsg1Ip3ughe8Wc1Jps0..afCeS.16IG0XDjBRRYgXDMbkmSROoaO', 3, 1, 'pelajar'),
+(6, 'dd', 'a@gmail.com', '1815025076', '1', '', '', '', '', '', '$2y$10$CMJxExd/QWsamczjmLNw1e8L64j9AdQisS0Jd4PbmwI7Yhw04NKEe', 3, 1, 'pelajar');
 
 -- --------------------------------------------------------
 
@@ -206,6 +195,13 @@ CREATE TABLE `nilai` (
   `id_kelas` varchar(6) NOT NULL,
   `id_fakultas` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `nilai`
+--
+
+INSERT INTO `nilai` (`id`, `id_mahasiswa`, `id_kelas`, `id_fakultas`) VALUES
+(1, '5', '4', '');
 
 -- --------------------------------------------------------
 
@@ -231,7 +227,10 @@ CREATE TABLE `pengumuman` (
 
 INSERT INTO `pengumuman` (`id`, `email_pengajar`, `id_kelas`, `jenis`, `pertemuan_ke`, `deskripsi`, `link`, `date`, `date_expired`) VALUES
 (6, 'renaldi@gmail.com', 4, 'pertemuan', 1, 'Silahkan Join di link zoom di bawah ini', 'https://us04web.zoom.us/j/9061451448?pwd=ZjBIRlRyKzhzM0JHVGhTV2RWNnZydz09', '2020-09-04 14:54:00', '2020-09-04 15:00:00'),
-(7, 'renaldi@gmail.com', 4, 'pertemuan', 2, 'Silahkan Join Link Zoom di bawah ini dan jangan lupa Absen!!!', 'http://localhost/phpmyadmin/', '2020-09-05 12:46:00', '2020-09-05 12:59:00');
+(7, 'renaldi@gmail.com', 4, 'pertemuan', 2, 'Silahkan Join Link Zoom di bawah ini dan jangan lupa Absen!!!', 'http://localhost/phpmyadmin/', '2020-09-05 12:46:00', '2020-09-05 12:59:00'),
+(8, 'renaldi@gmail.com', 4, 'pertemuan', 3, 'Ini merupakan pertemuan pertama kita\r\nSilahkan Join Link Zoom di bawah ini', 'https://zoom.us/j/97528836766?pwd=bDRhcWR5M1NKUU5RMWFRNHhzcDBQQT09', '2020-09-07 11:54:48', '2020-09-07 12:00:00'),
+(9, 'renaldi@gmail.com', 4, 'pertemuan', 4, 'silahkan join link zoom di bawah ini\r\n\r\nmantap', 'https://zoom.us/j/97528836766?pwd=bDRhcWR5M1NKUU5RMWFRNHhzcDBQQT09', '2020-09-07 12:03:00', '2020-09-07 12:07:00'),
+(10, 'renaldi@gmail.com', 4, 'pertemuan', 5, 'Ini Merupakan Pertemuan Ke 5\r\n\r\nSilahkan Join Link Zoom di bawah ini', 'http://localhost/pai/pengumuman/tambah', '2020-09-07 12:57:00', '2020-09-07 13:00:00');
 
 -- --------------------------------------------------------
 
@@ -407,8 +406,7 @@ ALTER TABLE `absen`
 -- Indeks untuk tabel `amalan_yaumiyah`
 --
 ALTER TABLE `amalan_yaumiyah`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_mahasiswa` (`id_mahasiswa`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `anggota_kelas`
@@ -487,25 +485,25 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `absen`
 --
 ALTER TABLE `absen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `amalan_yaumiyah`
 --
 ALTER TABLE `amalan_yaumiyah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `anggota_kelas`
 --
 ALTER TABLE `anggota_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `fakultas`
 --
 ALTER TABLE `fakultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
@@ -517,19 +515,19 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
