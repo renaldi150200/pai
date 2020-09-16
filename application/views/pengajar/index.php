@@ -1,4 +1,5 @@
 <div class="container">
+    <?= $this->session->flashdata('message'); ?>
     <div class="row">
 
         <?php foreach ($kelas as $class) : ?>
@@ -11,7 +12,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Edit Kelas</a>
-                            <a class="dropdown-item" href="#">Hapus Kelas</a>
+                            <button class="dropdown-item" style="background: transparent;" data-toggle="modal" data-target="#exampleModal">Hapus Kelas</button>
                             <a class="dropdown-item" href="<?= base_url('kelompok/lihatAnggota/') . $class['id']; ?>">Lihat Anggota Kelas</a>
                         </div>
                     </div>
@@ -25,5 +26,29 @@
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus kelas ini ?
+                <br>Karena semua data terkait kelas ini akan di terhapus juga
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="<?= base_url('kelompok/hapusKelas/') ?>" method="post">
+                    <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

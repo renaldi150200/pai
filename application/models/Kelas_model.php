@@ -100,4 +100,13 @@ class Kelas_model extends CI_Model
         $this->db->delete('amalan_yaumiyah', ['id_mahasiswa' => htmlspecialchars($this->input->post('id_mahasiswa', true)), 'id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
         $this->db->delete('nilai', ['id_mahasiswa' => htmlspecialchars($this->input->post('id_mahasiswa', true)), 'id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
     }
+    public function hapusKelas()
+    {
+        $this->db->delete('kelas', ['id' => htmlspecialchars($this->input->post('id_kelas', true))]);
+        $this->db->delete('pengumuman', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
+        $this->db->delete('anggota_kelas', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
+        $this->db->delete('absen', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
+        $this->db->delete('amalan_yaumiyah', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
+        $this->db->delete('nilai', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
+    }
 }

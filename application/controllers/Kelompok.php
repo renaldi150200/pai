@@ -68,4 +68,10 @@ class Kelompok extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Delete Anggota</div>');
         redirect('kelompok/lihatAnggota/' . $id_kelas);
     }
+    public function hapusKelas()
+    {
+        $this->Kelas_model->hapusKelas();
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelas berhasil di hapus</div>');
+        redirect('kelompok');
+    }
 }

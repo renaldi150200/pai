@@ -131,9 +131,10 @@ class Home extends CI_Controller
             WHERE id_mahasiswa='" . $id_mahasiswa . "'")->result_array();
 
         $id_kelas = $idkelas[0]['id_kelas'];
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda harus join salah satu kelas dulu untuk bisa mengisi Amalan Yaumiyah</div>');
-        redirect('home/amalan');
+
         if (!$id_kelas) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda harus join salah satu kelas dulu untuk bisa mengisi Amalan Yaumiyah</div>');
+            redirect('home/amalan');
         } else {
 
             $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required', ['required' => 'Wajib di isi']);
