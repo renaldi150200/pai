@@ -127,41 +127,37 @@ class Home extends CI_Controller
 
         $id_mahasiswa = $id[0]['id'];
 
-        $idkelas = $this->db->query("SELECT kode_kelas FROM anggota_kelas
-            WHERE email='" . $email . "'")->result_array();
+        $idkelas = $this->db->query("SELECT id_kelas FROM anggota_kelas
+            WHERE id_mahasiswa='" . $id_mahasiswa . "'")->result_array();
 
-        $id_kelas = $idkelas[0]['kode_kelas'];
-
-        // $this->form_validation->set_rules('shaumSunnah', 'Shaum Sunnah', 'required');
-        // $this->form_validation->set_rules('ket_shaumSunnah', 'Keterangan Shaum Sunnah', 'required');
-        $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('shalatTahajjud', 'Shalat Tahajjud', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('shalatDhuha', 'Shalat Dhuha', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('dzikirPagi', 'Dzikir Pagi', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('dzikirPetang', 'Dzikir Petang', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('tilawah', 'Tilawah', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('istighfar', 'Istighfar', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('birulWalidain', 'Birul Walidain', 'required', ['required' => 'Wajib di isi']);
-        $this->form_validation->set_rules('menontonKajian', 'Menonton Kajian', 'required', ['required' => 'Wajib di isi']);
-
-        if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/amalan_header');
-            $this->load->view('home/amalan', $data);
-            $this->load->view('templates/home_footer');
-            $this->load->view('templates/landing_script');
+        $id_kelas = $idkelas[0]['id_kelas'];
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda harus join salah satu kelas dulu untuk bisa mengisi Amalan Yaumiyah</div>');
+        redirect('home/amalan');
+        if (!$id_kelas) {
         } else {
-            $amalanHarian = $this->db->query("SELECT * FROM amalan_yaumiyah
-            WHERE id_mahasiswa='" . $id_mahasiswa . "' AND date = '" . $tanggal . "'")->result_array();
 
-            if (!$amalanHarian) {
+            $this->form_validation->set_rules('shalatWajib', 'Shalat Wajib', 'required', ['required' => 'Wajib di isi']);
+            $this->form_validation->set_rules('shalatDhuha', 'Shalat Dhuha', 'required', ['required' => 'Wajib di isi']);
+            $this->form_validation->set_rules('tilawah', 'Tilawah', 'required', ['required' => 'Wajib di isi']);
+            if ($this->form_validation->run() == false) {
 
-                $this->Pelajar_model->input_amalanPekanan($id_mahasiswa, $id_kelas);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Harian Berhasil Di Update</div>');
-                redirect('home/amalan');
+                $this->load->view('templates/amalan_header');
+                $this->load->view('home/amalan', $data);
+                $this->load->view('templates/home_footer');
+                $this->load->view('templates/landing_script');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Sudah Mengisi Amalan Yaumiyah</div>');
-                redirect('home/amalan');
+                $amalanHarian = $this->db->query("SELECT * FROM amalan_yaumiyah
+                WHERE id_mahasiswa='" . $id_mahasiswa . "' AND date = '" . $tanggal . "'")->result_array();
+
+                if (!$amalanHarian) {
+
+                    $this->Pelajar_model->input_amalanPekanan($id_mahasiswa, $id_kelas);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Amalan Harian Berhasil Di Update</div>');
+                    redirect('home/amalan');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Sudah Mengisi Amalan Yaumiyah</div>');
+                    redirect('home/amalan');
+                }
             }
         }
     }
