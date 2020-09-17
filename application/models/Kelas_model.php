@@ -109,4 +109,13 @@ class Kelas_model extends CI_Model
         $this->db->delete('amalan_yaumiyah', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
         $this->db->delete('nilai', ['id_kelas' => htmlspecialchars($this->input->post('id_kelas', true))]);
     }
+    public function editKelas()
+    {
+        $data = array(
+            'nama_kelas' => $this->input->post('nama_kelas', true),
+            'desc' => $this->input->post('desc', true)
+        );
+        $this->db->where('id', $this->input->post('id_kelas'));
+        return $this->db->update('kelas', $data);
+    }
 }

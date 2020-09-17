@@ -27,8 +27,8 @@ class Pengumuman extends CI_Controller
         $jumlah_pertemuan = $count[0]['jumlah'];
         // 
 
-        $this->load->view('templates/format_tanggal');
         $this->load->view('templates/user_header', $data);
+        $this->load->view('templates/format_tanggal');
         $this->load->view('templates/user_sidebar', $data);
         $this->load->view('templates/user_topbar', $data);
         $this->load->view('pengumuman/index', $data);

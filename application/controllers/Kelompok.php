@@ -74,4 +74,27 @@ class Kelompok extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelas berhasil di hapus</div>');
         redirect('kelompok');
     }
+    public function editKelas()
+    {
+        $data['title'] = 'Daftar Kelompok';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['email'] = $this->session->userdata('email');
+        $email = $this->session->userdata('email');
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
+        $this->form_validation->set_rules('desc', 'Deskripsi', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/user_header', $data);
+            $this->load->view('templates/user_sidebar', $data);
+            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('pengajar/index', $data);
+            $this->load->view('templates/user_footer');
+        } else {
+            $this->Kelas_model->editKelas();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelas berhasil di update!</div>');
+            redirect('kelompok');
+        }
+    }
 }

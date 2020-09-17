@@ -14,6 +14,7 @@
             <th class="text-center">#</th>
             <th class="text-center">NIM</th>
             <th class="text-center">Nama</th>
+            <th class="text-center">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +31,6 @@
               <td><?php nama($r['id_mahasiswa']); ?></td>
               <td>
                 <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModal"> Delete</button>
-
                 <!-- <a href="" class="badge badge-success">edit</a>
                                 <a href="" class="badge badge-danger">delete</a> -->
               </td>
