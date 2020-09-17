@@ -8,13 +8,13 @@
   <div class="row">
     <div class="col-lg-10">
       <?= $this->session->flashdata('message'); ?>
-      <table class="table table-strip">
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th class="text-center">#</th>
-            <th class="text-center">NIM</th>
-            <th class="text-center">Nama</th>
-            <th class="text-center">Aksi</th>
+            <th scope="col">#</th>
+            <th scope="col">NIM</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
               <td><?php nim($r['id_mahasiswa']); ?></td>
               <td><?php nama($r['id_mahasiswa']); ?></td>
               <td>
-                <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModal"> Delete</button>
+                <button type="button" class="btn badge badge-danger" data-toggle="modal" data-target="#hapus">Hapus</button>
                 <!-- <a href="" class="badge badge-success">edit</a>
                                 <a href="" class="badge badge-danger">delete</a> -->
               </td>
@@ -53,7 +53,7 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="hapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,11 +66,11 @@
         Apakah Anda yakin untuk mengeluarkannya dari kelas ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         <form action="<?= base_url('kelompok/hapusAnggota/') ?>" method="post">
           <input type="text" name="id_mahasiswa" value="<?= $r['id_mahasiswa']; ?>" hidden>
           <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
-          <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="submit" class="btn btn-danger">Hapus</button>
         </form>
       </div>
     </div>
