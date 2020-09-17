@@ -27,12 +27,12 @@ class Pengumuman extends CI_Controller
         $jumlah_pertemuan = $count[0]['jumlah'];
         // 
 
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/format_tanggal');
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/tanggal/format_tanggal');
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('pengumuman/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
 
     public function tambah()
@@ -60,11 +60,11 @@ class Pengumuman extends CI_Controller
         $this->form_validation->set_rules('link', 'link', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('pengumuman/tambah', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Kelas_model->input_pengumuman($email, $jumlah_pertemuan);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Baru Telah Di Upload</div>');
@@ -89,11 +89,11 @@ class Pengumuman extends CI_Controller
         $this->form_validation->set_rules('link', 'link', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('pengumuman/edit', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Kelas_model->edit_pengumuman();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah di Update!</div>');

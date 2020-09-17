@@ -15,11 +15,11 @@ class User extends CI_Controller
         $data['title'] = 'My Profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('user/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
 
     public function edit()
@@ -31,11 +31,11 @@ class User extends CI_Controller
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('user/edit', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
 
             $upload_image = $_FILES['image']['name'];
@@ -71,11 +71,11 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('user/change_password', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $currentpassword  = $this->input->post('currentpassword');
             $newpassword  = $this->input->post('newpassword1');

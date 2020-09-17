@@ -19,9 +19,9 @@ class Home extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
 
-        $this->load->view('templates/home_header', $data);
+        $this->load->view('templates/header/home_header', $data);
         $this->load->view('home/index', $data);
-        $this->load->view('templates/home_footer');
+        $this->load->view('templates/footer/home_footer');
         $this->load->view('templates/landing_script');
     }
     /* Absensi Amalan Yaumiyah */
@@ -71,9 +71,9 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tanggal = date('Y-m-d');
         $data['tanggal'] = tanggal_indo($tanggal, true);
-        $this->load->view('templates/amalan_header');
+        $this->load->view('templates/header/amalan_header');
         $this->load->view('home/amalan', $data);
-        $this->load->view('templates/home_footer');
+        $this->load->view('templates/footer/home_footer');
         $this->load->view('templates/landing_script');
     }
 
@@ -142,9 +142,9 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('tilawah', 'Tilawah', 'required', ['required' => 'Wajib di isi']);
             if ($this->form_validation->run() == false) {
 
-                $this->load->view('templates/amalan_header');
+                $this->load->view('templates/header/amalan_header');
                 $this->load->view('home/amalan', $data);
-                $this->load->view('templates/home_footer');
+                $this->load->view('templates/footer/home_footer');
                 $this->load->view('templates/landing_script');
             } else {
                 $amalanHarian = $this->db->query("SELECT * FROM amalan_yaumiyah
@@ -170,9 +170,9 @@ class Home extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('templates/amalan_header');
+        $this->load->view('templates/header/amalan_header');
         $this->load->view('home/praktikum');
-        $this->load->view('templates/home_footer');
+        $this->load->view('templates/footer/home_footer');
         $this->load->view('templates/landing_script');
     }
 
@@ -181,9 +181,9 @@ class Home extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        // $this->load->view('templates/amalan_header');
+        // $this->load->view('templates/header/amalan_header');
         $this->load->view('home/praktikum/sholat');
-        // $this->load->view('templates/home_footer');
+        // $this->load->view('templates/footer/home_footer');
         // $this->load->view('templates/landing_script');
 
     }
@@ -232,10 +232,10 @@ class Home extends CI_Controller
         $this->form_validation->set_rules('absen', 'absen', 'required');
         if ($this->form_validation->run() == false) {
 
-            $this->load->view('templates/amalan_header', $data);
-            $this->load->view('templates/selisih_tanggal', $data);
+            $this->load->view('templates/header/amalan_header', $data);
+            $this->load->view('templates/tanggal/selisih_tanggal', $data);
             $this->load->view('home/evaluasi', $data);
-            $this->load->view('templates/home_footer');
+            $this->load->view('templates/footer/home_footer');
             $this->load->view('templates/landing_script');
         } else {
             $this->Pelajar_model->update_absen($id_mahasiswa);
@@ -253,16 +253,16 @@ class Home extends CI_Controller
         if (!$kelas) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelas yang anda cari tidak ada harap cek kembali kode kelas yang anda cari</div>');
             // redirect('home/cariKelas');
-            $this->load->view('templates/amalan_header');
+            $this->load->view('templates/header/amalan_header');
             $this->load->view('home/cari_kelas', $data);
-            $this->load->view('templates/home_footer');
+            $this->load->view('templates/footer/home_footer');
             $this->load->view('templates/landing_script');
         } else {
 
             $data['kelas'] = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
-            $this->load->view('templates/amalan_header');
+            $this->load->view('templates/header/amalan_header');
             $this->load->view('home/cari_kelas', $data);
-            $this->load->view('templates/home_footer');
+            $this->load->view('templates/footer/home_footer');
             $this->load->view('templates/landing_script');
         }
     }
@@ -285,7 +285,7 @@ class Home extends CI_Controller
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('templates/amalan_header');
+        $this->load->view('templates/header/materi_header');
         $this->load->view('home/materi');
         $this->load->view('templates/landing_script');
     }

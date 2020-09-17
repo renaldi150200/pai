@@ -22,11 +22,11 @@ class Menu extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('menu/index', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Menu_model->input_menu();
             $this->Menu_model->inputAccess();
@@ -51,11 +51,11 @@ class Menu extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('menu/submenu', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Menu_model->input_submenu();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Sub Menu added</div>');
@@ -71,11 +71,11 @@ class Menu extends CI_Controller
 
         $this->form_validation->set_rules('menu', 'Menu Name', 'required');
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('menu/editMenu', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Menu_model->edit();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu has been updated!</div>');
@@ -94,11 +94,11 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('url', 'Url ', 'required|trim');
         $this->form_validation->set_rules('icon', 'Icon', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('menu/editSubMenu', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Menu_model->editSubMenu();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Menu has been updated!</div>');

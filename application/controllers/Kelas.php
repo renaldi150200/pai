@@ -21,11 +21,11 @@ class Kelas extends CI_Controller
         $this->form_validation->set_rules('desc', 'Deskripsi', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('kelompok/index', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Kelas Gagal Dibuat!</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

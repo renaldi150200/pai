@@ -17,11 +17,11 @@ class Agenda extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['agenda'] = $this->Agenda_model->getAgenda();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('agenda/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
     public function chart()
     {
@@ -43,11 +43,11 @@ class Agenda extends CI_Controller
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('agenda/index', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Agenda_model->inputAgenda();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Agenda added</div>');

@@ -23,7 +23,7 @@ class Auth extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/landing_header_auth');
+            $this->load->view('templates/header/landing_header_auth');
             $this->load->view('landing/log-in');
             $this->load->view('templates/landing_script');
         } else {
@@ -38,9 +38,9 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data['title'] = 'Login Absen Page';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('templates/header/auth_header', $data);
             $this->load->view('auth/absen');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/footer/auth_footer');
         } else {
             $this->_loginAbsen();
         }
@@ -158,7 +158,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/landing_header_auth');
+            $this->load->view('templates/header/landing_header_auth');
             $this->load->view('landing/sign-up', $data);
             $this->load->view('templates/landing_script');
         } else {

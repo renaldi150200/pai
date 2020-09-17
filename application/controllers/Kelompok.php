@@ -19,11 +19,11 @@ class Kelompok extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
 
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('pengajar/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
     public function lihatAnggota($id_kelas)
     {
@@ -36,12 +36,12 @@ class Kelompok extends CI_Controller
         $data['absen'] = $this->db->get_where('absen', ['id_kelas' => $id_kelas])->result_array();
 
 
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('pengajar/absen/data_mahasiswa', $data);
         $this->load->view('pengajar/lihatAnggota/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
     public function absen($id_kelas)
     {
@@ -52,12 +52,12 @@ class Kelompok extends CI_Controller
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['absen'] = $this->db->get_where('absen', ['id_kelas' => $id_kelas])->result_array();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('pengajar/absen/data_mahasiswa', $data);
         $this->load->view('pengajar/absen/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
     public function hapusAnggota()
     {
@@ -86,11 +86,11 @@ class Kelompok extends CI_Controller
         $this->form_validation->set_rules('desc', 'Deskripsi', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/user_header', $data);
-            $this->load->view('templates/user_sidebar', $data);
-            $this->load->view('templates/user_topbar', $data);
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
             $this->load->view('pengajar/index', $data);
-            $this->load->view('templates/user_footer');
+            $this->load->view('templates/footer/user_footer');
         } else {
             $this->Kelas_model->editKelas();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelas berhasil di update!</div>');

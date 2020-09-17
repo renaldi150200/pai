@@ -17,11 +17,11 @@ class Admin_login extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('admin/index', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
 
     public function role()
@@ -30,11 +30,11 @@ class Admin_login extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['role'] = $this->Admin_model->role();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('admin/role', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
     public function roleAccess($role_id)
     {
@@ -43,11 +43,11 @@ class Admin_login extends CI_Controller
         $this->session->userdata('email')])->row_array();
         $data['role'] = $this->Admin_model->roleAccess($role_id);
         $data['menu'] = $this->Menu_model->getMenu();
-        $this->load->view('templates/user_header', $data);
-        $this->load->view('templates/user_sidebar', $data);
-        $this->load->view('templates/user_topbar', $data);
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
         $this->load->view('admin/role-access', $data);
-        $this->load->view('templates/user_footer');
+        $this->load->view('templates/footer/user_footer');
     }
 
     public function change_access()
