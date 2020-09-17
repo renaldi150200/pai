@@ -40,7 +40,8 @@ class Kelas_model extends CI_Model
     }
     public function getPengumuman($email)
     {
-        return $this->db->query("SELECT pengumuman.jenis,pengumuman.date,kelas.nama_kelas,pengumuman.id FROM pengumuman INNER JOIN kelas ON pengumuman.email_pengajar = kelas.email_pengajar")->result_array();
+        $this->db->where('email_pengajar', $email);
+        return $this->db->get('pengumuman')->result_array();
     }
     public function getPengumumanById($id)
     {

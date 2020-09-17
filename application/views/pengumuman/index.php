@@ -1,6 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    <?php
+    foreach ($id_kelas as $kelas) :
+    endforeach;
+    ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
@@ -29,7 +32,7 @@
                             ?>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $pengumuman_['jenis'] ?></td>
-                            <td><?= $pengumuman_['nama_kelas'] ?></td>
+                            <td><?= $kelas['nama_kelas'] ?></td>
                             <td><?= indonesian_date($pengumuman_['date'], 'l, d F Y') . $time; ?></td>
                             <td>
                                 <a href="<?= base_url('pengumuman/edit/') ?><?= $pengumuman_['id']; ?>" class="badge badge-success">edit</a>
