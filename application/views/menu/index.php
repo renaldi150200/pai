@@ -54,7 +54,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('menu/menu'); ?>" method="post">
+            <form action="<?= base_url('menu'); ?>" method="post">
                 <div class="modal-body">
                     <form>
                         <div class="form-group">

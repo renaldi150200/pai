@@ -28,16 +28,19 @@
                             <option value="<?= $kelas['id']; ?>"><?= $kelas['nama_kelas']; ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Link</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="link" placeholder="Link">
+                    <?= form_error('link', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Tanggal</label>
                             <input type="date" class="form-control" id="exampleFormControlInput1" name="tanggal">
+                            <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <div class="col-12 col-lg-2 pt-lg-4 ">
@@ -47,6 +50,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Jam</label>
                             <input type="time" class="form-control" id="exampleFormControlInput1" name="jam">
+                            <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <div class="col-12 col-lg-2 pt-lg-4 ">
@@ -56,6 +60,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Jam Expired</label>
                             <input type="time" class="form-control" id="exampleFormControlInput1" name="jam_expired">
+                            <?= form_error('jam_expired', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>
@@ -63,6 +68,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Deksripsi</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
+                    <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>

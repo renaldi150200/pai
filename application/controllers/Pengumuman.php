@@ -97,7 +97,7 @@ class Pengumuman extends CI_Controller
             $this->load->view('templates/footer/user_footer');
         } else {
             $this->Kelas_model->edit_pengumuman();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah di Update!</div>');
+            $this->session->set_flashdata('message1', '<div class="alert alert-success" role="alert">Pengumuman telah di Update!</div>');
             redirect('pengumuman');
         }
     }
