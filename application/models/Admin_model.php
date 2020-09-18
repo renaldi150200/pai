@@ -32,6 +32,14 @@ class Admin_model extends CI_Model
         $this->db->where('email', $email);
         return $this->db->update('user');
     }
+    public function editnamaFoto()
+    {
+        $name = $this->input->post('nama');
+        $email = $this->input->post('email1');
+        $this->db->set('name', $name);
+        $this->db->where('email', $email);
+        return $this->db->update('user');
+    }
     public function input_anggota()
     {
         $data = [

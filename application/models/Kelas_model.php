@@ -43,6 +43,21 @@ class Kelas_model extends CI_Model
         $this->db->where('email_pengajar', $email);
         return $this->db->get('pengumuman')->result_array();
     }
+    public function getMaxPertemuan($email)
+    {
+        $this->db->select_max('pertemuan_ke');
+        $this->db->where('jenis', 'pertemuan');
+        $this->db->where('email_pengajar', $email);
+        return  $this->db->get('pengumuman')->result_array();
+    }
+    public function getMaxTugas($email)
+    {
+        $this->db->select_max('pertemuan_ke');
+        $this->db->where('jenis', 'tugas');
+        $this->db->where('email_pengajar', $email);
+        return  $this->db->get('pengumuman')->result_array();
+    }
+
     public function getPengumumanById($id)
     {
         return $this->db->get_where('pengumuman', ['id' => $id])->row_array();
@@ -71,14 +86,19 @@ class Kelas_model extends CI_Model
         return $this->db->update('pengumuman', $data);
     }
 
-    public function input_pengumuman($email, $jumlah_pertemuan)
+    public function input_pengumuman($email)
     {
         $tanggal = $this->input->post('tanggal', true);
         $jam = $this->input->post('jam', true);
         $jam_ex = $this->input->post('jam_expired', true);
         $date = $tanggal . ' ' . $jam . ':00';
         $jam_expired = $tanggal . ' ' . $jam_ex . ':00';
-        $jumlah_pertemuan += 1;
+        if ($this->input->post('jenis', true) == 'pertemuan') {
+            $jumlah_pertemuan = $this->input->post('jumlah_pertemuan', true);
+        } else if ($this->input->post('jenis', true) == 'tugas') {
+            $jumlah_pertemuan = $this->input->post('jumlah_kelas', true);
+        }
+
         $data = [
             'jenis' => htmlspecialchars($this->input->post('jenis', true)),
             'id_kelas' => htmlspecialchars($this->input->post('kelas', true)),

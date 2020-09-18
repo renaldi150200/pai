@@ -30,10 +30,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-12 mt-md-5">
-        <img src="<?= base_url('assets/img/pelajar/home/'); ?>2.png" class="rounded img-fluid yaumiyah mt-3">
+        <img src="<?= base_url('assets/img/pelajar/home/'); ?>2.png" class="rounded img-fluid yaumiyah mt-3 pl-md-3">
         <h4 class="mt-5">Absensi Amalan Yaumiyah</h4>
         <br>
-        <p>Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+        <p class="font-weight-bold pr-5" style="font-family: 'Kreon', serif;">Mutaba'ah Yaumiyah merupakan suatu kegiatan evaluasi amal ibadah sehari-hari kita baik wajib maupun sunnah, istilah umum untuk mutaba'ah yaumiyah itu sendiri kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita.</p>
         <a href="<?= base_url('home/amalan'); ?>" class="btn btn-primary mt-md-4">Mulai Absen</a>
       </div>
       <div class="col-md-5 mt-5"></div>
@@ -93,7 +93,7 @@
         <!-- end of Card -->
         <!-- Card -->
         <div class="card" style="width: 28rem;border-style: solid;border-width: 2px;border-radius:4px;">
-          <img src="<?= base_url('assets/img/pelajar/home/'); ?>6.jpg" class="card-img-top" alt="...">
+          <img src="<?= base_url('assets/img/pelajar/home/'); ?>8.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title mt-3">Materi BBAQ</h5>
             <p class="card-text mb-4">Alquran pedoman umat Islam, maka dari itu sudah seyogianya kita membacanya dengan baik dan benar</p>
@@ -187,7 +187,7 @@
         <!-- end of Card -->
         <!-- Card -->
         <div class="card" style="width: 29rem;border-style: solid;border-width: 2px;border-radius:4px;">
-          <img src="<?= base_url('assets/img/pelajar/home/'); ?>6.jpg" class="card-img-top" alt="...">
+          <img src="<?= base_url('assets/img/pelajar/home/'); ?>8.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title mt-3">Praktikum BBAQ</h5>
             <p class="card-text mb-4 mx-1">Membaca alquran dengan menggunakan tajwid yang baik dan benar merupakan kewajiban setiap ummat islam. Oleh karenanya melalui praktikum ini harapannya pelajar dapat membaca Al Qur'an sesuai dengan kaidah - kaidah tajwid yang ada.</p>

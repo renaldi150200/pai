@@ -40,9 +40,11 @@ class Pengumuman extends CI_Controller
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $data['id_kelas'] = $this->Kelas_model->getKelas($email);
         $data['pengumuman'] = $this->Kelas_model->getPengumuman($email);
+        $data['pertemuan'] = $this->Kelas_model->getMaxPertemuan($email);
+        $data['tugas'] = $this->Kelas_model->getMaxTugas($email);
 
-        $this->db->select_max('id');
-        $jumlah_pertemuan =  $this->db->get('user_role')->result_array();
+
+
         $this->db->where('email_pengajar', $email);
         $kelas = $this->db->get('kelas')->result_array();
         if (!$kelas) {
@@ -66,7 +68,7 @@ class Pengumuman extends CI_Controller
                 $this->load->view('pengumuman/tambah', $data);
                 $this->load->view('templates/footer/user_footer');
             } else {
-                $this->Kelas_model->input_pengumuman($email, $jumlah_pertemuan);
+                $this->Kelas_model->input_pengumuman($email);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Baru Telah Di Upload</div>');
                 redirect('pengumuman');
             }

@@ -12,7 +12,6 @@
                         <label class="input-group-text" for="inputGroupSelect01">Jenis</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01" name="jenis">
-                        <option selected>Pilih</option>
                         <option value="pertemuan">Pertemuan</option>
                         <option value="tugas">Tugas</option>
                     </select>
@@ -23,7 +22,6 @@
                         <label class="input-group-text" for="inputGroupSelect01">Kelas</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01" name="kelas">
-                        <option selected>Pilih</option>
                         <?php foreach ($id_kelas as $kelas) : ?>
                             <option value="<?= $kelas['id']; ?>"><?= $kelas['nama_kelas']; ?></option>
                         <?php endforeach; ?>
@@ -70,6 +68,16 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
                     <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <?php foreach ($pertemuan as $sm) : ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="jumlah_pertemuan" value="<?= $sm['pertemuan_ke'] + 1; ?>" hidden>
+                    </div>
+                <?php endforeach; ?>
+                <?php foreach ($tugas as $sma) : ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="jumlah_kelas" value="<?= $sma['pertemuan_ke'] + 1; ?>" hidden>
+                    </div>
+                <?php endforeach; ?>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
         </div>
