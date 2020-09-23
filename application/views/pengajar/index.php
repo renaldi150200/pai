@@ -37,7 +37,7 @@
                         </div>
                         <div class="modal-body">
                             Apakah Anda yakin untuk menghapus kelas ini ?
-                            <br>Karena semua data terkait kelas ini akan di terhapus juga
+                            <br>Karena semua data terkait kelas ini akan terhapus juga
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

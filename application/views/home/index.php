@@ -230,7 +230,7 @@
         <img src="<?= base_url('assets/img/pelajar/home/'); ?>2.png" class="rounded img-fluid yaumiyah mt-3">
         <h4 class="mt-5">Kelas</h4>
         <br>
-        <p>Kelas adalah tempat kita dimana melihat berbagai pengumuman ter-update yang diberikan mentor dan disini juga kita bisa absensi sebelum mengikuti mentoring</p>
+        <p style="font-family: 'Kreon', serif;">Kelas adalah tempat kita dimana melihat berbagai pengumuman ter-update yang diberikan mentor dan disini juga kita bisa absensi sebelum mengikuti mentoring</p>
         <a href="<?= base_url('home/evaluasi'); ?>" class="btn btn-primary mt-md-4">Masuk Kelas</a>
       </div>
       <div class="col-md-5 mt-5"></div>

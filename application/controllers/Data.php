@@ -19,6 +19,7 @@ class Data extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['usr'] = $this->Admin_model->getUser();
+
         $this->load->view('templates/header/user_header', $data);
         $this->load->view('templates/sidebar/user_sidebar', $data);
         $this->load->view('templates/topbar/user_topbar', $data);
@@ -49,9 +50,11 @@ class Data extends CI_Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus()
     {
-        $this->Admin_model->hapusUser($id);
+
+        $kelas = $this->db->get_where('kelas', ['email_pengajar' => $this->input->post('email', true)])->result_array();
+        $this->Admin_model->hapusUser($kelas);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Delete User Success</div>');
         redirect('data/user');
     }

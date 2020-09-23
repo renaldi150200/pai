@@ -37,7 +37,11 @@
                             <td><?= $sm['is_active'] ?></td>
                             <td>
                                 <a href="<?= base_url('data/edit/') ?><?= $sm['id']; ?>" class="badge badge-success">edit</a>
-                                <a href="<?= base_url('data/hapus/') ?><?= $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a>
+                                <form action="<?= base_url('data/hapus/') ?>" method="post">
+                                    <input type="text" name="email" value="<?= $sm['email']; ?>" hidden>
+                                    <input type="text" name="id" value="<?= $sm['id']; ?>" hidden>
+                                    <button type="submit" class="btn badge badge-danger" onclick="return confirm('yakin menghapus user ini ? karena semua data terkait user ini juga terhapus');">hapus</button>
+                                </form>
                             </td>
                         </tr>
                         <?php $i++; ?>

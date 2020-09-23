@@ -97,9 +97,17 @@ class Admin_model extends CI_Model
     {
         $this->db->delete('user_role', ['id' => $this->input->post('id_role')]);
     }
-    public function hapusUser($id)
+    public function hapusUser($kelas)
     {
-        $this->db->delete('user', ['id' => $id]);
+        $this->db->delete('user', ['id' =>  $this->input->post('id', true)]);
+        foreach ($kelas as $id_kelas) :
+            $this->db->delete('kelas', ['id' =>  $id_kelas['id']]);
+            $this->db->delete('anggota_kelas', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('amalan_yaumiyah', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('pengumuman', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('absen', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('nilai', ['id_kelas' =>  $id_kelas['id']]);
+        endforeach;
     }
     public function hapusAnggota($id)
     {
@@ -108,6 +116,10 @@ class Admin_model extends CI_Model
     public function getUserById($id)
     {
         return $this->db->get_where('user', ['id' => $id])->row_array();
+    }
+    public function getKelasById($email)
+    {
+        return $this->db->get_where('kelas', ['email_pengajar' => $email])->row_array();
     }
     public function editUser()
     {
