@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Sep 2020 pada 12.10
+-- Waktu pembuatan: 23 Sep 2020 pada 09.55
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -47,7 +47,7 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`id`, `id_kelas`, `id_mahasiswa`, `pertemuan_1`, `pertemuan_2`, `pertemuan_3`, `pertemuan_4`, `pertemuan_5`, `pertemuan_6`, `pertemuan_7`, `pertemuan_8`) VALUES
-(1, '7', '3', '1', '', '', '', '', '', '', '');
+(1, '1', '3', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -62,8 +62,17 @@ CREATE TABLE `amalan_yaumiyah` (
   `shalatWajib` int(1) NOT NULL,
   `shalatDhuha` int(1) NOT NULL,
   `tilawah` int(1) NOT NULL,
-  `date` varchar(30) NOT NULL
+  `date` varchar(30) NOT NULL,
+  `jam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `amalan_yaumiyah`
+--
+
+INSERT INTO `amalan_yaumiyah` (`id`, `id_mahasiswa`, `id_kelas`, `shalatWajib`, `shalatDhuha`, `tilawah`, `date`, `jam`) VALUES
+(3, '3', '1', 3, 8, 5, '23-09-2020', '10:24:10'),
+(10, '3', '1', 3, 2, 3, '24-09-2020', '04:00:00');
 
 -- --------------------------------------------------------
 
@@ -82,7 +91,7 @@ CREATE TABLE `anggota_kelas` (
 --
 
 INSERT INTO `anggota_kelas` (`id`, `id_mahasiswa`, `id_kelas`) VALUES
-(1, '3', '7');
+(1, '3', '1');
 
 -- --------------------------------------------------------
 
@@ -104,7 +113,7 @@ INSERT INTO `fakultas` (`id`, `nama_fakultas`) VALUES
 (2, 'Fakultas Ilmu Sosial dan Politik'),
 (3, 'Fakultas Pertanian'),
 (4, 'Fakultas Kehutanan'),
-(5, 'Fakultas Keguruan dan Ilmu Pendidikan (Base)'),
+(5, 'Fakultas Keguruan dan Ilmu Pendidikan BASE'),
 (6, 'Fakultas Perikanan dan Ilmu Kelautan'),
 (7, 'Fakultas Hukum'),
 (8, 'Fakultas Matematika dan Ilmu Pengetahuan Alam'),
@@ -113,8 +122,8 @@ INSERT INTO `fakultas` (`id`, `nama_fakultas`) VALUES
 (11, 'Fakultas Kesehatan Masyarakat'),
 (12, 'Fakultas Farmasi'),
 (13, 'Fakultas Ilmu Budaya'),
-(14, 'Fakultas Keguruan dan Ilmu Pendidikan (Pahwlawan)'),
-(15, 'Fakultas Keguruan dan Ilmu Pendidikan (Banggeris)');
+(14, 'Fakultas Keguruan dan Ilmu Pendidikan MIPA'),
+(15, 'Fakultas Keguruan dan Ilmu Pendidikan IP/IPS');
 
 -- --------------------------------------------------------
 
@@ -135,8 +144,7 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id`, `kode_kelas`, `nama_kelas`, `desc`, `email_pengajar`) VALUES
-(6, 'hw2WiV', 'TPAI Kel-12 Fakultas Teknik', 'Kelompok 12 ', 'eric@gmail.com'),
-(7, '9svCVB', 'TPAI 12 Teknik', 'Rabu 12.00 - 14.00', 'renaldi@gmail.com');
+(1, '5zDGmN', 'TPAI 12 Teknik', 'Senin 12.00 - 13.00', 'renaldi@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -182,15 +190,23 @@ CREATE TABLE `nilai` (
   `id` int(11) NOT NULL,
   `id_mahasiswa` varchar(20) NOT NULL,
   `id_kelas` varchar(6) NOT NULL,
-  `id_fakultas` varchar(2) NOT NULL
+  `id_fakultas` varchar(2) NOT NULL,
+  `pretest_bbaq` float NOT NULL,
+  `pretest_sholat` float NOT NULL,
+  `kehadiran` float NOT NULL,
+  `postest_bbaq` float NOT NULL,
+  `postest_sholat` float NOT NULL,
+  `postest_wudhu` float NOT NULL,
+  `postest_janaiz` float NOT NULL,
+  `postest_tertulis` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `nilai`
 --
 
-INSERT INTO `nilai` (`id`, `id_mahasiswa`, `id_kelas`, `id_fakultas`) VALUES
-(1, '3', '7', '');
+INSERT INTO `nilai` (`id`, `id_mahasiswa`, `id_kelas`, `id_fakultas`, `pretest_bbaq`, `pretest_sholat`, `kehadiran`, `postest_bbaq`, `postest_sholat`, `postest_wudhu`, `postest_janaiz`, `postest_tertulis`) VALUES
+(1, '3', '1', '', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -209,14 +225,6 @@ CREATE TABLE `pengumuman` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_expired` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `pengumuman`
---
-
-INSERT INTO `pengumuman` (`id`, `email_pengajar`, `id_kelas`, `jenis`, `pertemuan_ke`, `deskripsi`, `link`, `date`, `date_expired`) VALUES
-(1, 'renaldi@gmail.com', 7, 'pertemuan', 1, 'Silahkan', 'https://us04web.zoom.us/j/73680340188?pwd=NVVENHNia3h2UUVNOG1JUkJoR1gwdz09', '2020-09-17 02:33:00', '2020-09-17 02:46:00'),
-(2, 'renaldi@gmail.com', 7, 'tugas', 2, 'Silahkan', 'https://us04web.zoom.us/j/73680340188?pwd=NVVENHNia3h2UUVNOG1JUkJoR1gwdz09', '2020-09-17 02:42:00', '2020-09-17 02:59:00');
 
 -- --------------------------------------------------------
 
@@ -263,12 +271,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `nim_pengajar`, `id_fakultas`, `image`, `password`, `role_id`, `is_active`, `date_created`, `role_nama`) VALUES
-(6, 'Renaldi Panji Wibowo', 'r1815025079@gmail.com', '', '', 'default1.png', '$2y$10$/uagjHZdKwTW96xWlytFKu1Gf8xnd/EDPHK.FiGOEizHcpFEp7Vki', 2, 1, 1575935004, 'pengajar'),
-(8, 'Surya Saputra', 'renaldi@gmail.com', '', '', 'default1.png', '$2y$10$SfSDjtuw9jGDPgWddPdaK.sXsubiGUvnSwfLbbjcVerQXqljqDjtm', 1, 1, 1596264624, 'Admin'),
-(9, 'Friska Nabila Oktavian', 'renaldi@gmail.comd', '', '', 'default1.png', '$2y$10$.TvwZDWp4gFLnzv2747...6Sg/9svQFcl69Xf9lVNZEnGp3g5HT9q', 2, 1, 1596275470, 'pengajar'),
-(10, 'renald', 'r@gmail.com', '', '', 'default1.png', '$2y$10$vhmqxuhWEr1i17eGEnFEX.a/J0Art3C4e9f3Rqjadr.CeGZ64oAgK', 3, 1, 1596348040, 'pelajar'),
-(12, 'eric contena', 'eric@gmail.com', '', '', 'default1.png', '$2y$10$Wqr7zA.Rj6q0w5t/ODCGpe/uHVdze.mKhOabBhcgqweN1ijPtAqum', 2, 1, 1596348653, 'pengajar'),
-(13, 'Friska Nabila Oktavian', 'ahmad@gmail.com', '', '15', 'default1.png', '$2y$10$QoFj1TaeIiGwGDdU5lFXnOVVPMZAxTZRtIftRO/Sk.kVemEqEPfPa', 2, 1, 1600335523, 'pengajar');
+(7, 'Surya Saputra', 'renaldi@gmail.com', '', '', 'default1.png', '$2y$10$SfSDjtuw9jGDPgWddPdaK.sXsubiGUvnSwfLbbjcVerQXqljqDjtm', 1, 1, 1596264624, 'Admin'),
+(9, 'Friska Nabila Oktavian', 'renaldi@gmail.comd', '', '', 'default1.png', '$2y$10$.TvwZDWp4gFLnzv2747...6Sg/9svQFcl69Xf9lVNZEnGp3g5HT9q', 2, 1, 1596275470, 'pengajar');
 
 -- --------------------------------------------------------
 
@@ -301,7 +305,10 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (34, 2, 0),
 (35, 1, 8),
 (36, 1, 3),
-(37, 1, 0);
+(39, 1, 7),
+(40, 1, 7),
+(41, 1, 0),
+(42, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -324,7 +331,8 @@ INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
 (3, 'Pengumuman'),
 (4, 'User'),
 (5, 'Menu'),
-(6, 'Data User');
+(6, 'Data User'),
+(9, 'Data Nilai Fakultas');
 
 -- --------------------------------------------------------
 
@@ -375,9 +383,9 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (6, 1, 'Role', 'admin_login/role', 'fas fa-fw fa-user-tie', 1),
 (7, 4, 'Change Password', 'user/changepassword', 'fas fa-key', 1),
 (8, 6, 'Lihat Data User', 'data/user', 'fas fa-user-friends', 1),
-(10, 8, 'Agenda', 'agenda/taklim', 'fas fa-user-tie', 1),
 (12, 3, 'Pengumuman', 'pengumuman', 'fas fa-bullhorn', 1),
-(13, 0, 'Daftar Kelompok', 'kelompok', 'fas fa-users', 1);
+(13, 0, 'Daftar Kelompok', 'kelompok', 'fas fa-users', 1),
+(14, 9, 'Nilai Fakultas', 'nilai/index', 'fas fa-user-friends', 1);
 
 --
 -- Indexes for dumped tables
@@ -479,7 +487,7 @@ ALTER TABLE `absen`
 -- AUTO_INCREMENT untuk tabel `amalan_yaumiyah`
 --
 ALTER TABLE `amalan_yaumiyah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `anggota_kelas`
@@ -497,7 +505,7 @@ ALTER TABLE `fakultas`
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
@@ -515,25 +523,25 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
@@ -545,7 +553,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
