@@ -61,10 +61,7 @@
           <div class="card-body ">
             <h5 class="card-title mt-3">Materi Wudhu</h5>
             <p class="card-text mb-4">Kita kan belajar bersama dengan memperhatikan sikap berwudhu yang baik, benar, dan sesuai sunnah</p>
-            <!-- <a href="<?= base_url('home/materi') ?>" class="btn btn-success mb-4">Mulai Belajar</a> -->
-            <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal">
-              Mulai Belajar
-            </button>
+            <a href="<?= base_url('home/materiWudhu') ?>" class="btn btn-success mb-4">Mulai Belajar</a>
           </div>
         </div>
         <!-- end of Card -->
@@ -84,10 +81,7 @@
           <div class="card-body">
             <h5 class="card-title mt-3">Materi Janaiz</h5>
             <p class="card-text mb-4">Merupakan serangkaian proses pengelolaan jenazah yang patut dipahami oleh semua umat islam</p>
-            <!-- <a href="<?= base_url('home/materi') ?>" class="btn btn-success mb-4">Mulai Belajar</a> -->
-            <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal">
-              Mulai Belajar
-            </button>
+            <a href="<?= base_url('home/materiJanaiz') ?>" class="btn btn-success mb-4">Mulai Belajar</a>
           </div>
         </div>
         <!-- end of Card -->
@@ -97,16 +91,13 @@
           <div class="card-body">
             <h5 class="card-title mt-3">Materi BBAQ</h5>
             <p class="card-text mb-4">Alquran pedoman umat Islam, maka dari itu sudah seyogianya kita membacanya dengan baik dan benar</p>
-            <!-- <a href="<?= base_url('home/materi') ?>" class="btn btn-success mb-4">Mulai Belajar</a> -->
-            <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal">
-              Mulai Belajar
-            </button>
+            <a href="<?= base_url('home/materiTajwid') ?>" class="btn btn-success mb-4">Mulai Belajar</a>
           </div>
         </div>
         <!-- end of Card -->
 
         <!-- Modal -->
-
+        
 
         <!-- Button trigger modal -->
 

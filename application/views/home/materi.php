@@ -1,8 +1,9 @@
 <div class="container" style="margin-top:50px">
+  <div>
   <div class="row ">
     <div class="col-sm-3"style="position:fixed ">
-      <h3 style=" margin-top:50px">Materi Praktik Shalat</h3>
-      <ul class="nav nav-pills flex-column">
+      <h3 style=" margin-top:50px">Materi <br>Praktik Shalat</h3>
+      <ul class="nav nav-pills flex-column" style="margin-left:-15px">
         <li class="nav-item">
           <a class="nav-link active" href="#">Pengertian Sholat</a>
         </li>
@@ -28,13 +29,16 @@
       </ul>
       <hr class="d-sm-none">
     </div>
-    <div class="col-sm-9  offset-4"style="margin-top:50px">
+  </div>
+</div>
+    <div class="col-sm-9  offset-4 border-content"style="margin-top:50px;background-color:white;border-radius:5px">
       <h2 id="pengertian">Pengertian Sholat</h2>
       <h2></h2>
       <p>Sholat menurut ahli fiqih adalah suatu tindak ibadah disertai bacaan doa-doa yang diawali dengan takbir dan diakhiri dengan salam sesuai dengan syarat-syarat dan rukun-rukunnya. Makna yang sebenarnya adalah menghadapkan jiwa (hati dan pikiran) kepada Allah SWT untuk menumbuhkan rasa takut dan rasa bersalah diri kepada-Nya, serta mengakui keagungan dan kesempurnaan-Nya.
 Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah SWT dalam Surat Al Baqoroh ayat 4:” dirikanlah sholat, tunaikanlah zakat, dan rukuklah bersama orang-orang yang rukuk (berjamaah)”. Sedangkan manfaatnya bagi orang-orang yang beriman, diterangkan dalam Surat Al Ankabut ayat 45: ”Sesungguhnya shalat itu mencegah dari (perbuatan-perbuatan) keji dan munkar”.
 </p>
       <br>
+      <hr>
       <h2 id="hukum">Hukum Sholat</h2>
       <p>Hukum sholat dapat dikategorikan sebagai berikut:<br>
 1.	Fardhu (Sholat Wajib), Sholat fardhu ialah sholat yang diwajibkan untuk mengerjakannya. Sholat fardhu terbagi lagi menjadi dua, yaitu:
@@ -44,6 +48,7 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
     <br>&nbsp;&nbsp;  a.	Sunnah Mu‟akad adalah shalat sunnah yang dianjurkan dengan penekanan yang kuat (hampir seperti wajib), seperti sholat dua hari raya (ied), sholat sunnah witir dan sholat sunnah thowaf.
     <br>&nbsp;&nbsp;  b.	Sunnah Ghoiru Mu‟akad adalah sholat sunnah yang dianjurkan tanpa penekanan yang kuat, seperti sholat sunnah rawatib dan sholat sunnah yang sifatnya insidental (tergantung waktu dan keadaan, seperti sholat gerhana).
 </p>
+      <hr>
       <h2 id="sholat">Sholat 5 Waktu</h2>
       <p>Sholat lima waktu memiliki hukum fardhu „ain dan terdiri atas:
       <br>&nbsp;&nbsp;1.	Subuh, terdiri dari 2 rakaat. Waktu subuh diawali dari munculnya fajar shaddiq, yakni cahaya putih yang melintang di ufuk timur. Waktu subuh berakhir ketika terbitnya matahari.
@@ -52,6 +57,7 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
       <br>&nbsp;&nbsp;4.	Maghrib, terdiri dari 3 rakaat. Waktu maghrib diawali dengan terbenamnya matahari dan berakhir dengan masuknya waktu isya‟.
       <br>&nbsp;&nbsp;5.	Isya’, terdiri dari 4 rakaat. Waktu Isya diawali dengan hilangnya cahaya merah (syafaq) di langit barat dan berakhir hingga terbitnya fajar shadiq keesokan harinya.
 </p>
+      <hr>
       <h2 id="syarat">Syarat-Syarat Sholat</h2>
       <p>
       &nbsp;&nbsp;1.	Muslim,
@@ -64,6 +70,7 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
 <br>&nbsp;&nbsp;8.	Menghadap kiblat,
  
 </p>
+      <hr>
       <h2 id="rukun">Rukun Sholat</h2>
       <p>
       &nbsp;&nbsp;1.	Niat
@@ -82,6 +89,7 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
       <br>&nbsp;&nbsp; 12.	Mengucapkan salam
       <br>&nbsp;&nbsp; 13.	Tertib (melakukan rukun secara berurutan). Sabda Rasulullah: “Shalatlah kalian sebagaimana kalian melihatku sholat” (HR. Bukhori).
 </p>
+      <hr>
       <h2 id="sunah">Sunnah-Sunnah Sholat</h2>
 
       <p>
@@ -99,6 +107,7 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
 <br>&nbsp;&nbsp;6.	Membaca “aamiin” setelah membaca surat Al Fatihah. Hal ini disunnahkan kepada setiap orang yang sholat, baik sebagai imam maupun makmum atau sholat sendirian.
 
       </p>
+      <hr>
       <h2 id="tatacara">gerakan sholat</h2>
       <div class="row">
         <div class="col-4">
@@ -137,7 +146,14 @@ Setiap orang yang mengaku dirinya islam, wajib mendirikan sholat. Firman Allah S
           <h5>9. Duduk atahiat akhir</h5>
           <img src="<?=base_url('assets/vendor/asset-materi/image/');?>dudukakhir2.jpg"  class="rounded img-fluid">
         </div>
+        <div class="col-4">
+        <video width="320" height="240" style="margin-left:250px;"controls>
+          <h5>10. Video Sholat</h5>
+          <source src="" type="">
+          <source src="" type="">
+       </video>
+       </div>
       </div>
       <p></p>    
     </div>
-  </div>
+</div>

@@ -680,6 +680,14 @@ pre code {
   max-width: 66.666667%;
 }
 
+h2 {
+  margin-top: 15px;
+}
+
+hr {
+  border: 1px solid;
+}
+
 .col-9 {
   -ms-flex: 0 0 75%;
   flex: 0 0 75%;
@@ -4089,6 +4097,13 @@ input[type="button"].btn-block {
   border-top-right-radius: 0.25rem;
 }
 
+.white-col {
+  background-color: white;
+  border-radius: 3px;
+  /* margin-top: 40px; */
+  margin-left: 50px;
+}
+
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
 }
@@ -4116,7 +4131,7 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.nav-pills .nav-link.active,
+.nav-pills .nav-link:hover,
 .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #007bff;
@@ -4229,6 +4244,10 @@ input[type="button"].btn-block {
 
 .navbar-toggler:hover, .navbar-toggler:focus {
   text-decoration: none;
+}
+
+.border-content {
+  border:1px solid;
 }
 
 .navbar-toggler-icon {
