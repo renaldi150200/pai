@@ -22,12 +22,16 @@
     <title>PAI - Praktikum Agama Islam</title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/fontawesome-all.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/swiper.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/magnific-popup.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/styles.css" rel="stylesheet">
+
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Custom Style -->
     <style>

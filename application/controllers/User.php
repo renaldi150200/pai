@@ -22,13 +22,13 @@ class User extends CI_Controller
         $this->load->view('templates/footer/user_footer');
     }
 
-    public function edit()
+    public function editFoto()
     {
         $data['title'] = 'Edit Profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Full Name', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header/user_header', $data);
@@ -48,14 +48,34 @@ class User extends CI_Controller
                 if ($this->upload->do_upload('image')) {
 
                     $this->Admin_model->upload_image();
-                    $this->Admin_model->edit();
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-                    redirect('user');
+                    $this->Admin_model->editnamaFoto();
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Foto profile anda telah di update!</div>');
+                    redirect('user/myprofile');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Update Failed!</div>');
-                    redirect('user');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Update Foto Gagal!</div>');
+                    redirect('user/myprofile');
                 }
             }
+        }
+    }
+    public function edit()
+    {
+        $data['title'] = 'Edit Profile';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
+            $this->load->view('user/edit', $data);
+            $this->load->view('templates/footer/user_footer');
+        } else {
+            $this->Admin_model->edit();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Nama profile anda telah di update!</div>');
+            redirect('user/myprofile');
         }
     }
 

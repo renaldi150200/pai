@@ -64,8 +64,21 @@ class Home extends CI_Controller
         }
 
 
-
+        /*------------------get id Mahasiswa---------------------------*/
         $email = $this->session->userdata('email');
+        $id = $this->db->query("SELECT id FROM mahasiswa
+            WHERE email='" . $email . "'")->result_array();
+        $id_mahasiswa = $id[0]['id'];
+        /*-------------------------------------------------------------*/
+        // $tanggal = date('Y-m-d');
+        // $amalanHarian = $this->db->query("SELECT * FROM amalan_yaumiyah
+        // WHERE id_mahasiswa='" . $id_mahasiswa . "' AND date = '" . $tanggal . "'")->result_array();
+
+        // if (!$amalanHarian) {
+        // } else {
+
+        $data['max'] = $this->Pelajar_model->getJamMax($id_mahasiswa);
+        // }
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();

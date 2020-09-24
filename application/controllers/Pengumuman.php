@@ -20,18 +20,13 @@ class Pengumuman extends CI_Controller
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $data['id_kelas'] = $this->Kelas_model->getKelas($email);
         $data['pengumuman'] = $this->Kelas_model->getPengumuman($email);
-        // Get Data Pertemuan
-        $kode = $this->db->query("SELECT id FROM kelas WHERE email_pengajar='" . $email . "'")->result_array();
-        $kode_kelas = $kode[0]['id'];
-        $count = $this->db->query("SELECT COUNT(id) AS jumlah FROM pengumuman WHERE id_kelas='" . $kode_kelas . "' AND jenis='pertemuan' ")->result_array();
-        $jumlah_pertemuan = $count[0]['jumlah'];
-        // 
+
 
         $this->load->view('templates/header/user_header', $data);
         $this->load->view('templates/tanggal/format_tanggal');
         $this->load->view('templates/sidebar/user_sidebar', $data);
         $this->load->view('templates/topbar/user_topbar', $data);
-        $this->load->view('pengumuman/index', $data);
+        $this->load->view('pengumuman/index', $data, $email);
         $this->load->view('templates/footer/user_footer');
     }
 
@@ -45,30 +40,38 @@ class Pengumuman extends CI_Controller
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $data['id_kelas'] = $this->Kelas_model->getKelas($email);
         $data['pengumuman'] = $this->Kelas_model->getPengumuman($email);
-        // Get Data Pertemuan
-        $kode = $this->db->query("SELECT id FROM kelas WHERE email_pengajar='" . $email . "'")->result_array();
-        $kode_kelas = $kode[0]['id'];
-        $count = $this->db->query("SELECT COUNT(id) AS jumlah FROM pengumuman WHERE id_kelas='" . $kode_kelas . "' AND jenis='pertemuan' ")->result_array();
-        $jumlah_pertemuan = $count[0]['jumlah'];
+        $data['pertemuan'] = $this->Kelas_model->getMaxPertemuan($email);
+        $data['tugas'] = $this->Kelas_model->getMaxTugas($email);
 
-        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-        $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
-        $this->form_validation->set_rules('jam', 'jam', 'required');
-        $this->form_validation->set_rules('jam_expired', 'jam_expired', 'required');
-        $this->form_validation->set_rules('link', 'link', 'required');
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header/user_header', $data);
-            $this->load->view('templates/sidebar/user_sidebar', $data);
-            $this->load->view('templates/topbar/user_topbar', $data);
-            $this->load->view('pengumuman/tambah', $data);
-            $this->load->view('templates/footer/user_footer');
-        } else {
-            $this->Kelas_model->input_pengumuman($email, $jumlah_pertemuan);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Baru Telah Di Upload</div>');
+
+        $this->db->where('email_pengajar', $email);
+        $kelas = $this->db->get('kelas')->result_array();
+        if (!$kelas) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Buat Kelas Terlebih Dahulu</div>');
             redirect('pengumuman');
+        } else {
+
+
+            $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+            $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+            $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+            $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+            $this->form_validation->set_rules('jam', 'jam', 'required');
+            $this->form_validation->set_rules('jam_expired', 'jam_expired', 'required');
+            $this->form_validation->set_rules('link', 'link', 'required');
+
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header/user_header', $data);
+                $this->load->view('templates/sidebar/user_sidebar', $data);
+                $this->load->view('templates/topbar/user_topbar', $data);
+                $this->load->view('pengumuman/tambah', $data);
+                $this->load->view('templates/footer/user_footer');
+            } else {
+                $this->Kelas_model->input_pengumuman($email);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Baru Telah Di Upload</div>');
+                redirect('pengumuman');
+            }
         }
     }
     public function edit($id)
@@ -96,7 +99,7 @@ class Pengumuman extends CI_Controller
             $this->load->view('templates/footer/user_footer');
         } else {
             $this->Kelas_model->edit_pengumuman();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah di Update!</div>');
+            $this->session->set_flashdata('message1', '<div class="alert alert-success" role="alert">Pengumuman telah di Update!</div>');
             redirect('pengumuman');
         }
     }

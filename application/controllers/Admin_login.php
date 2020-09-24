@@ -30,11 +30,48 @@ class Admin_login extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['role'] = $this->Admin_model->role();
-        $this->load->view('templates/header/user_header', $data);
-        $this->load->view('templates/sidebar/user_sidebar', $data);
-        $this->load->view('templates/topbar/user_topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('templates/footer/user_footer');
+        $data['max'] = $this->Admin_model->getRoleMax();
+        $this->form_validation->set_rules('role', 'Role Name', 'required');
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('templates/footer/user_footer');
+        } else {
+            $this->Admin_model->inputRole();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User Role baru telah ditambahkan</div>');
+            redirect('admin_login/role');
+        }
+    }
+    public function editRole()
+    {
+        $data['title'] = 'Role';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['role'] = $this->Admin_model->role();
+        $this->form_validation->set_rules('role', 'Role Name', 'required');
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('templates/header/user_header', $data);
+            $this->load->view('templates/sidebar/user_sidebar', $data);
+            $this->load->view('templates/topbar/user_topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('templates/footer/user_footer');
+        } else {
+            $this->Admin_model->editRole();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User Role baru telah di edit</div>');
+            redirect('admin_login/role');
+        }
+    }
+    public function hapusRole()
+    {
+        $this->Admin_model->hapusRole();
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Hapus User Role Berhasil</div>');
+        redirect('admin_login/role');
     }
     public function roleAccess($role_id)
     {

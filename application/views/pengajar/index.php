@@ -25,66 +25,68 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal Hapus Kelas -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Peringatan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah Anda yakin untuk menghapus kelas ini ?
+                            <br>Karena semua data terkait kelas ini akan terhapus juga
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="<?= base_url('kelompok/hapusKelas/') ?>" method="post">
+                                <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal Hapus Kelas -->
+
+            <!-- Modal Edit Kelas-->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Kelas</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="<?= base_url('kelompok/editKelas'); ?>">
+                                <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
+                                <div class="form-group">
+                                    <label class="col-form-label">Nama Kelas</label>
+                                    <input type="text" class="form-control" id="recipient-name" value="<?= $class['nama_kelas']; ?>" name="nama_kelas">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Deskripsi Kelas</label>
+                                    <input type="text" class="form-control" id="recipient-name" value="<?= $class['desc']; ?>" name="desc">
+                                </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Edit Kelas</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <?php endforeach; ?>
     </div>
-</div>
-<!-- Modal Hapus Kelas -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Peringatan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin untuk menghapus kelas ini ?
-                <br>Karena semua data terkait kelas ini akan di terhapus juga
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form action="<?= base_url('kelompok/hapusKelas/') ?>" method="post">
-                    <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Modal Hapus Kelas -->
 
-<!-- Modal Edit Kelas-->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Kelas</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="<?= base_url('kelompok/editKelas'); ?>">
-                    <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
-                    <div class="form-group">
-                        <label class="col-form-label">Nama Kelas</label>
-                        <input type="text" class="form-control" id="recipient-name" value="<?= $class['nama_kelas']; ?>" name="nama_kelas">
-                    </div>
-                    <div class="form-group">
-                        <label class="col-form-label">Deskripsi Kelas</label>
-                        <input type="text" class="form-control" id="recipient-name" value="<?= $class['desc']; ?>" name="desc">
-                    </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Edit Kelas</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- End Modal Edit Kelas -->

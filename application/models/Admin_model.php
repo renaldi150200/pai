@@ -13,6 +13,12 @@ class Admin_model extends CI_Model
         return $this->db->get_where("user_role")->result_array();
     }
 
+    public function getRoleMax()
+    {
+        $this->db->select_max('id');
+        return  $this->db->get('user_role')->result_array();
+    }
+
     public function roleAccess($role_id)
     {
         return $this->db->get_where('user_role', ['id' => $role_id])->row_array();
@@ -22,6 +28,14 @@ class Admin_model extends CI_Model
     {
         $name = $this->input->post('name');
         $email = $this->input->post('email');
+        $this->db->set('name', $name);
+        $this->db->where('email', $email);
+        return $this->db->update('user');
+    }
+    public function editnamaFoto()
+    {
+        $name = $this->input->post('nama');
+        $email = $this->input->post('email1');
         $this->db->set('name', $name);
         $this->db->where('email', $email);
         return $this->db->update('user');
@@ -38,6 +52,15 @@ class Admin_model extends CI_Model
         ];
 
         $this->db->insert('anggota', $data);
+    }
+    public function inputRole()
+    {
+        $data = [
+            'id'  => htmlspecialchars($this->input->post('id_role', true)),
+            'role' => htmlspecialchars($this->input->post('role', true)),
+        ];
+
+        $this->db->insert('user_role', $data);
     }
 
     public function upload_image()
@@ -70,32 +93,21 @@ class Admin_model extends CI_Model
     {
         return $this->db->get('anggota')->result_array();
     }
-    public function getAnggotaSPK()
+    public function hapusRole()
     {
-        return $this->db->query("SELECT * FROM anggota
-        WHERE departemen LIKE 'SPK' ")->result_array();
+        $this->db->delete('user_role', ['id' => $this->input->post('id_role')]);
     }
-    public function getAnggotaMSI()
+    public function hapusUser($kelas)
     {
-        return $this->db->query("SELECT * FROM anggota
-        WHERE departemen LIKE 'MSI' ")->result_array();
-    }
-    public function getAnggotaBUD()
-    {
-        return $this->db->query("SELECT * FROM anggota
-        WHERE departemen LIKE 'BUD' ")->result_array();
-    }
-    public function getAnggotaKEMUS()
-    {
-        return $this->db->query("SELECT * FROM anggota
-        WHERE departemen LIKE 'KEMUSLIMAHAN' ")->result_array();
-    }
-
-
-
-    public function hapusUser($id)
-    {
-        $this->db->delete('user', ['id' => $id]);
+        $this->db->delete('user', ['id' =>  $this->input->post('id', true)]);
+        foreach ($kelas as $id_kelas) :
+            $this->db->delete('kelas', ['id' =>  $id_kelas['id']]);
+            $this->db->delete('anggota_kelas', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('amalan_yaumiyah', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('pengumuman', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('absen', ['id_kelas' =>  $id_kelas['id']]);
+            $this->db->delete('nilai', ['id_kelas' =>  $id_kelas['id']]);
+        endforeach;
     }
     public function hapusAnggota($id)
     {
@@ -104,6 +116,10 @@ class Admin_model extends CI_Model
     public function getUserById($id)
     {
         return $this->db->get_where('user', ['id' => $id])->row_array();
+    }
+    public function getKelasById($email)
+    {
+        return $this->db->get_where('kelas', ['email_pengajar' => $email])->row_array();
     }
     public function editUser()
     {
@@ -119,5 +135,13 @@ class Admin_model extends CI_Model
         );
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('user', $data);
+    }
+    public function editRole()
+    {
+        $id = $this->input->post('id_role');
+        $role = $this->input->post('role');
+        $this->db->set('role', $role);
+        $this->db->where('id', $id);
+        return $this->db->update('user_role');
     }
 }

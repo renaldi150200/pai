@@ -12,7 +12,7 @@
           <h1>Absensi Amalan</h1>
           <h1>Yaumiyah</h1>
           <br>
-          <p>Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumi kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+          <p style="font-family: 'Kreon', serif;font-size:18px;">Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal ibadah sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumiyah kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
         </div>
         <div class="col-md-5 mt-5"></div>
       </div>
@@ -170,7 +170,9 @@
 
 
           <div class="row font-weight-bold mt-4 ">
-            <div class="col-8 col-md-4 pt-1 px-lg-4 py-2 rounded" style="background-color:#dddfe6;">Terakhir di Update Jam 20:59</div>
+            <?php foreach ($max as $terakhir) : ?>
+              <div class="col-8 col-md-4 pt-1 px-lg-4 py-2 rounded" style="background-color:#dddfe6;">Terakhir di Update Jam <?= $terakhir['jam']; ?> </div>
+            <?php endforeach; ?>
             <div class="col-1  offset-md-6 pt-1 pl-4 pl-md-5 "><button type="submit" class="btn btn-success">Update</button></div>
           </div>
         </div>

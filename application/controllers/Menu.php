@@ -31,7 +31,7 @@ class Menu extends CI_Controller
             $this->Menu_model->input_menu();
             $this->Menu_model->inputAccess();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New menu added</div>');
-            redirect('menu/menu');
+            redirect('menu');
         }
     }
 
