@@ -157,7 +157,7 @@
             <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Tivo</a> -->
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="<?= base_url('home'); ?>"><img src="<?= base_url('assets/img/pelajar/home/'); ?>logo.png" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="<?= base_url('home'); ?>"><i class="fas fa-arrow-left "></i></a>
 
             <!-- Mobile Menu Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">

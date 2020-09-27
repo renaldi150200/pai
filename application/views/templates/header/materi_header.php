@@ -157,7 +157,7 @@
             <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Tivo</a> -->
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="<?= base_url('home'); ?>"><img src="<?= base_url('assets/img/pelajar/home/'); ?>logo.png" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="<?= base_url('home'); ?>"><a class="navbar-brand logo-image" href="<?= base_url('home'); ?>"><i class="fas fa-arrow-left "></i></a></a>
 
             <!-- Mobile Menu Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,19 +169,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/amalan'); ?>"><span class="list-nav">Amalan Yaumiyah</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/materi'); ?>"><span class="list-nav">Materi</span> </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home'); ?>"><span class="list-nav">Praktikum</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/evaluasi'); ?>"><span class="list-nav">Kelas</span></a>
-                    </li>
                 </ul>
                 <span class="nav-item">
                     <a class="btn-outline-sm " href="<?= base_url('auth/logout'); ?>">Keluar</a>
