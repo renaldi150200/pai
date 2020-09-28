@@ -65,8 +65,19 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Deksripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
+                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" style="display: none;"></textarea>
+                    <textarea class="form-control" id="userFied" rows="3"></textarea>
                     <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <!-- Script untuk multi line -->
+                    <script>
+                        function addNewLine() {
+                            text = document.getElementById('userFied').value;
+                            text = text.replace(/  /g, "[sp][sp]");
+                            text = text.replace(/\n/g, "[nl]");
+                            document.getElementById('deskripsi').value = text;
+                            return false;
+                        }
+                    </script>
                 </div>
                 <?php foreach ($pertemuan as $sm) : ?>
                     <div class="form-group">

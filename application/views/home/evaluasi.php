@@ -49,7 +49,6 @@ if ($anggota == 'true') {
           $deskripsi = $pengumuman['deskripsi'];
           $deskripsi = preg_replace("#\[sp\]#", "&nbsp;", $deskripsi);
           $deskripsi = preg_replace("#\[nl\]#", "<br>\n", $deskripsi);
-
           ?>
           <p class="card-text font-weight-bold mb-1"><?= $deskripsi ?></p>
           <a href="<?= $pengumuman['link']; ?>" style="text-decoration: underline; color:blue;"><?= $pengumuman['link']; ?></a><br>

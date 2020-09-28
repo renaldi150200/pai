@@ -97,7 +97,12 @@
                         </div>
                     </div>
                 </div>
-
+                <?php
+                $deskripsi = $pengumuman['deskripsi'];
+                $deskripsi = preg_replace("#\[sp\]#", "&nbsp;", $deskripsi);
+                $deskripsi = preg_replace("#\[nl\]#", "<br>\n", $deskripsi);
+                ?>
+                <p id="isiDeskripsi" style="display: none;"><?= $deskripsi; ?></p>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Deksripsi</label>
                     <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" style="display: none;"></textarea>
@@ -112,6 +117,8 @@
                             document.getElementById('deskripsi').value = text;
                             return false;
                         }
+                        const valueDesc = document.getElementById('isiDeskripsi').innerText;
+                        document.getElementById('userFied').value = valueDesc;
                     </script>
                     <!-- End of Script untuk multi line -->
                 </div>
