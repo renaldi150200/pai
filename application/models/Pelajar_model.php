@@ -8,6 +8,10 @@ class Pelajar_model extends CI_Model
         date_default_timezone_set('Asia/Makassar');
         $tanggal = date('Y-m-d');
         $jam = date('H:i:s');
+        /* Get Week in Datetime now */
+        $date = new DateTime($tanggal);
+        $week = $date->format("W");
+        /*-------------------------*/
         $data = [
             'id_mahasiswa' => htmlspecialchars($id_mahasiswa),
             'id_kelas' => htmlspecialchars($id_kelas),
@@ -15,6 +19,7 @@ class Pelajar_model extends CI_Model
             'shalatDhuha' => htmlspecialchars($this->input->post('shalatDhuha', true)),
             'tilawah' => htmlspecialchars($this->input->post('tilawah', true)),
             'jam' => htmlspecialchars($jam),
+            'pekan' => htmlspecialchars($week),
             'date' => htmlspecialchars($tanggal),
         ];
 
@@ -43,8 +48,9 @@ class Pelajar_model extends CI_Model
     }
     public function getJamMax($id_mahasiswa)
     {
+        $this->db->select('jam');
         $this->db->where('id_mahasiswa', $id_mahasiswa);
-        $this->db->order_by('jam', 'ASC');
+        $this->db->order_by('id', 'DESC');
         $this->db->limit(1);
         return  $this->db->get('amalan_yaumiyah')->result_array();
     }

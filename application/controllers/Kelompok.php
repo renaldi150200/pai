@@ -43,6 +43,25 @@ class Kelompok extends CI_Controller
         $this->load->view('pengajar/lihatAnggota/index', $data);
         $this->load->view('templates/footer/user_footer');
     }
+    public function lihatAmalan($id_kelas)
+    {
+        $data['title'] = 'Amalan Yaumiyah Kelompok';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['email'] = $this->session->userdata('email');
+        $email = $this->session->userdata('email');
+        $data['pekan'] = $this->Kelas_model->getMaxAmalan($id_kelas);
+        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
+        $data['absen'] = $this->db->get_where('absen', ['id_kelas' => $id_kelas])->result_array();
+        $data['week'] = $this->input->post('pekan', true);
+        $data['id_kelas'] = $id_kelas;
+        $this->load->view('templates/header/user_header', $data);
+        $this->load->view('templates/sidebar/user_sidebar', $data);
+        $this->load->view('templates/topbar/user_topbar', $data);
+        $this->load->view('pengajar/lihatAmalan/data_amalan', $data);
+        $this->load->view('pengajar/lihatAmalan/index', $data);
+        $this->load->view('templates/footer/user_footer');
+    }
     public function absen($id_kelas)
     {
         $data['title'] = 'Absen Kelompok';

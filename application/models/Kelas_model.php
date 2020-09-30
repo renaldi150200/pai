@@ -139,4 +139,10 @@ class Kelas_model extends CI_Model
         $this->db->where('id', $this->input->post('id_kelas'));
         return $this->db->update('kelas', $data);
     }
+
+    public function getMaxAmalan($id_kelas)
+    {
+        $id = $this->db->query("SELECT min(pekan) FROM amalan_yaumiyah WHERE id_kelas='" . $id_kelas . "'")->result_array();
+        return $id[0]['min(pekan)'];
+    }
 }

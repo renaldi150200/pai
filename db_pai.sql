@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Sep 2020 pada 09.55
+-- Waktu pembuatan: 30 Sep 2020 pada 05.57
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -47,7 +47,8 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`id`, `id_kelas`, `id_mahasiswa`, `pertemuan_1`, `pertemuan_2`, `pertemuan_3`, `pertemuan_4`, `pertemuan_5`, `pertemuan_6`, `pertemuan_7`, `pertemuan_8`) VALUES
-(1, '1', '3', '', '', '', '', '', '', '', '');
+(1, '1', '3', '', '', '', '', '', '', '', ''),
+(2, '1', '4', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `amalan_yaumiyah` (
   `shalatWajib` int(1) NOT NULL,
   `shalatDhuha` int(1) NOT NULL,
   `tilawah` int(1) NOT NULL,
-  `date` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `pekan` int(2) NOT NULL,
   `jam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -70,9 +72,12 @@ CREATE TABLE `amalan_yaumiyah` (
 -- Dumping data untuk tabel `amalan_yaumiyah`
 --
 
-INSERT INTO `amalan_yaumiyah` (`id`, `id_mahasiswa`, `id_kelas`, `shalatWajib`, `shalatDhuha`, `tilawah`, `date`, `jam`) VALUES
-(3, '3', '1', 3, 8, 5, '23-09-2020', '10:24:10'),
-(10, '3', '1', 3, 2, 3, '24-09-2020', '04:00:00');
+INSERT INTO `amalan_yaumiyah` (`id`, `id_mahasiswa`, `id_kelas`, `shalatWajib`, `shalatDhuha`, `tilawah`, `date`, `pekan`, `jam`) VALUES
+(16, '3', '1', 5, 1, 5, '2020-09-29', 40, '22:15:34'),
+(17, '3', '1', 3, 1, 2, '2020-09-30', 40, '11:01:27'),
+(18, '3', '1', 3, 1, 1, '2020-10-05', 41, '11:01:27'),
+(19, '3', '1', 3, 1, 4, '2020-10-07', 41, '13:03:00'),
+(20, '4', '1', 2, 1, 3, '2020-09-30', 40, '11:18:21');
 
 -- --------------------------------------------------------
 
@@ -91,7 +96,8 @@ CREATE TABLE `anggota_kelas` (
 --
 
 INSERT INTO `anggota_kelas` (`id`, `id_mahasiswa`, `id_kelas`) VALUES
-(1, '3', '1');
+(1, '3', '1'),
+(2, '4', '1');
 
 -- --------------------------------------------------------
 
@@ -206,7 +212,8 @@ CREATE TABLE `nilai` (
 --
 
 INSERT INTO `nilai` (`id`, `id_mahasiswa`, `id_kelas`, `id_fakultas`, `pretest_bbaq`, `pretest_sholat`, `kehadiran`, `postest_bbaq`, `postest_sholat`, `postest_wudhu`, `postest_janaiz`, `postest_tertulis`) VALUES
-(1, '3', '1', '', 0, 0, 0, 0, 0, 0, 0, 0);
+(1, '3', '1', '', 0, 0, 0, 0, 0, 0, 0, 0),
+(2, '4', '1', '', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -225,6 +232,13 @@ CREATE TABLE `pengumuman` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_expired` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengumuman`
+--
+
+INSERT INTO `pengumuman` (`id`, `email_pengajar`, `id_kelas`, `jenis`, `pertemuan_ke`, `deskripsi`, `link`, `date`, `date_expired`) VALUES
+(3, 'renaldi@gmail.com', 1, 'pertemuan', 1, 'absen', 'https://zoom.us/j/97528836766?pwd=bDRhcWR5M1NKUU5RMWFRNHhzcDBQQT09', '2020-09-29 15:14:00', '2020-09-29 15:15:00');
 
 -- --------------------------------------------------------
 
@@ -481,19 +495,19 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `absen`
 --
 ALTER TABLE `absen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `amalan_yaumiyah`
 --
 ALTER TABLE `amalan_yaumiyah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `anggota_kelas`
 --
 ALTER TABLE `anggota_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `fakultas`
@@ -517,13 +531,13 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

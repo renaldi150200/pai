@@ -214,7 +214,7 @@
 </div> <!-- end of cards-1 -->
 <!-- end of Praktikum -->
 <!-- Kelas -->
-<div id="absensi" class="container-fluid ">
+<div id="kelas" class="container-fluid ">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-12 mt-md-5">

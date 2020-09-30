@@ -99,27 +99,27 @@
             </div>
             <div class="col-1 pt-1">
               <label class="radio-inline pr-5">
-                <input type="radio" name="shalatDhuha" value="2">
+                <input type="radio" name="shalatDhuha" value="1">
               </label>
             </div>
             <div class="col-1 pt-1">
               <label class="radio-inline pr-5">
-                <input type="radio" name="shalatDhuha" value="4">
+                <input type="radio" name="shalatDhuha" value="1">
               </label>
             </div>
             <div class="col-1 pt-1">
               <label class="radio-inline pr-5">
-                <input type="radio" name="shalatDhuha" value="6">
+                <input type="radio" name="shalatDhuha" value="1">
               </label>
             </div>
             <div class="col-1 pt-1">
               <label class="radio-inline pr-5">
-                <input type="radio" name="shalatDhuha" value="8">
+                <input type="radio" name="shalatDhuha" value="1">
               </label>
             </div>
             <div class="col-1 pt-1">
               <label class="radio-inline pr-5">
-                <input type="radio" name="shalatDhuha" value="10">
+                <input type="radio" name="shalatDhuha" value="1">
               </label>
             </div>
           </div>

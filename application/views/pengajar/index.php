@@ -14,6 +14,7 @@
                             <button class="dropdown-item" style="background: transparent;" data-toggle="modal" data-target="#exampleModal2">Edit Kelas</button>
                             <button class="dropdown-item" style="background: transparent;" data-toggle="modal" data-target="#exampleModal">Hapus Kelas</button>
                             <a class="dropdown-item" href="<?= base_url('kelompok/lihatAnggota/') . $class['id']; ?>">Lihat Anggota Kelas</a>
+                            <a class="dropdown-item" href="<?= base_url('kelompok/lihatAmalan/') . $class['id']; ?>">Lihat Absen Amalan Yaumiyah</a>
                         </div>
                     </div>
                     <img src="<?= base_url('assets/img/kelas/kelas.jpg') ?>" class="card-img-top" alt="...">
