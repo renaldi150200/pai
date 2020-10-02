@@ -12,9 +12,9 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        // if ($this->session->userdata('email')) {
-        //     redirect('user/myprofile');
-        // }
+        if ($this->session->userdata('email')) {
+            redirect('user/myprofile');
+        }
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
             'required' => 'Isi NIM terlebih dahulu',
         ]);
