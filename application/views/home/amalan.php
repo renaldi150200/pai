@@ -9,10 +9,14 @@
       <div class="row">
         <div class="col-md-12 col-12 mt-md-5">
           <img src="<?= base_url('assets/img/pelajar/home/'); ?>2.png" class="rounded img-fluid yaumiyah mt-3">
-          <h1>Absensi Amalan</h1>
-          <h1>Yaumiyah</h1>
+          <h1 class="mt-lg-5">Absensi Amalan Yaumiyah</h1>
           <br>
-          <p style="font-family: 'Kreon', serif;font-size:18px;">Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal ibadah sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumiyah kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+          <div class="row">
+            <div class="col-12">
+              <p style="font-family: 'Kreon', serif;font-size:18px;" class="text-justify">Mutaba'ah Yaumiyah adalah suatu kegiatan evaluasi amal ibadah sehari-hari kita baik wajib maupun sunnah, istilah umum mutaba'ah yaumiyah kurang lebih menjadi muhasabah atau renungan untuk memperbaiki kualitas iman kita</p>
+            </div>
+          </div>
+
         </div>
         <div class="col-md-5 mt-5"></div>
       </div>

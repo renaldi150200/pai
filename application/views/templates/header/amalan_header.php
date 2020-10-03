@@ -28,7 +28,7 @@
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/swiper.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/magnific-popup.css" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/asset-landing/'); ?>css/styles.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@700&display=swap" rel="stylesheet">
     <!-- Custom Style -->
     <style>
         body {
@@ -168,20 +168,6 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/amalan'); ?>"><span class="list-nav">Amalan Yaumiyah</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/materi'); ?>"><span class="list-nav">Materi</span> </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home'); ?>"><span class="list-nav">Praktikum</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?= base_url('home/evaluasi'); ?>"><span class="list-nav">Kelas</span></a>
-                    </li> -->
                 </ul>
                 <span class="nav-item">
                     <a class="btn-outline-sm " href="<?= base_url('auth/logout'); ?>">Keluar</a>

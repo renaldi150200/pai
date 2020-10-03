@@ -32,8 +32,8 @@ class Kelompok extends CI_Controller
         $this->session->userdata('email')])->row_array();
         $data['email'] = $this->session->userdata('email');
         $email = $this->session->userdata('email');
-        $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['absen'] = $this->db->get_where('absen', ['id_kelas' => $id_kelas])->result_array();
+        $data['id_kelas'] = $id_kelas;
 
 
         $this->load->view('templates/header/user_header', $data);

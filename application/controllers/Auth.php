@@ -31,46 +31,7 @@ class Auth extends CI_Controller
         }
     }
 
-    public function absen()
-    {
-        $this->form_validation->set_rules('email', 'email', 'trim|required');
 
-        if ($this->form_validation->run() == false) {
-
-            $data['title'] = 'Login Absen Page';
-            $this->load->view('templates/header/auth_header', $data);
-            $this->load->view('auth/absen');
-            $this->load->view('templates/footer/auth_footer');
-        } else {
-            $this->_loginAbsen();
-        }
-    }
-
-    private function _loginAbsen()
-    {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        $anggota = $this->db->get_where('anggota', ['email' => $email])->row_array();
-
-        if ($anggota) {
-            if ($password == $anggota['password']) {
-
-                $data = [
-                    'email' => $anggota['email'],
-                    'role_id' => $anggota['role_id'],
-
-                ];
-                $this->session->set_userdata($data);
-                redirect('absen');
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah</div>');
-                redirect('auth/absen');
-            }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-            redirect('auth/absen');
-        }
-    }
 
     private function _login()
     {
@@ -186,12 +147,6 @@ class Auth extends CI_Controller
         </button>
       </div>');
         redirect('landing/login');
-    }
-    public function logoutAnggota()
-    {
-        $this->session->unset_userdata('email');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu berhasil Keluar!</div>');
-        redirect('auth/absen');
     }
 
     public function blocked()

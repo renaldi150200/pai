@@ -27,43 +27,6 @@ class Home extends CI_Controller
     /* Absensi Amalan Yaumiyah */
     public function amalan()
     {
-        function tanggal_indo($tanggal, $cetak_hari = false)
-        {
-            $hari = array(
-                1 => 'Senin',
-                'Selasa',
-                'Rabu',
-                'Kamis',
-                'Jumat',
-                'Sabtu',
-                'Minggu',
-            );
-
-            $bulan = array(
-                1 => 'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
-            );
-            $split = explode('-', $tanggal);
-            $tgl_indo = $split[2] . ' ' . $bulan[(int) $split[1]] . ' ' . $split[0];
-
-            if ($cetak_hari) {
-                $num = date('N', strtotime($tanggal));
-                return $hari[$num] . ', ' . $tgl_indo;
-            }
-            return $tgl_indo;
-        }
-
-
         /*------------------get id Mahasiswa---------------------------*/
         $email = $this->session->userdata('email');
         $id = $this->db->query("SELECT id FROM mahasiswa
@@ -71,7 +34,7 @@ class Home extends CI_Controller
         $id_mahasiswa = $id[0]['id'];
         /*-------------------------------------------------------------*/
 
-
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $data['max'] = $this->Pelajar_model->getJamMax($id_mahasiswa);
 
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
@@ -79,6 +42,7 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tanggal = date('Y-m-d');
         $data['tanggal'] = tanggal_indo($tanggal, true);
+        /*-------------------------------------------------------------*/
         $this->load->view('templates/header/amalan_header');
         $this->load->view('home/amalan', $data);
         $this->load->view('templates/footer/home_footer');
@@ -87,41 +51,7 @@ class Home extends CI_Controller
 
     public function amalanPekanan()
     {
-        function tanggal_($tanggal, $cetak_hari = false)
-        {
-            $hari = array(
-                1 => 'Senin',
-                'Selasa',
-                'Rabu',
-                'Kamis',
-                'Jumat',
-                'Sabtu',
-                'Minggu',
-            );
 
-            $bulan = array(
-                1 => 'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
-            );
-            $split = explode('-', $tanggal);
-            $tgl_indo = $split[2] . ' ' . $bulan[(int) $split[1]] . ' ' . $split[0];
-
-            if ($cetak_hari) {
-                $num = date('N', strtotime($tanggal));
-                return $hari[$num] . ', ' . $tgl_indo;
-            }
-            return $tgl_indo;
-        }
         /* Get Datetime now*/
         $tanggal = date('Y-m-d');
         $tanggal_ini = tanggal_($tanggal, true);
@@ -187,9 +117,12 @@ class Home extends CI_Controller
     /* Praktikum PAI */
     public function praktikum()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        /*-------------------------------------------------------------*/
+
         $this->load->view('templates/header/amalan_header');
         $this->load->view('home/praktikum');
         $this->load->view('templates/footer/home_footer');
@@ -224,15 +157,18 @@ class Home extends CI_Controller
     /* Evaluasi */
     public function evaluasi()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $id_mhs = $this->db->query("SELECT id FROM mahasiswa WHERE email='" . $email . "'")->result_array();
         $id_mahasiswa = $id_mhs[0]['id'];
         $anggota = $this->db->get_where('anggota_kelas', ['id_mahasiswa' => $id_mahasiswa])->result_array();
+        /*-------------------------------------------------------------*/
 
         if (!$anggota) {
             $data['anggota'] = 'false';
         } else {
+            /*----------Data - data yang di pakai di Halaman ini----------*/
             $data['anggota'] = 'true';
 
             $kode = $this->db->query("SELECT id_kelas FROM anggota_kelas WHERE id_mahasiswa='" . $id_mahasiswa . "'")->result_array();
@@ -241,11 +177,11 @@ class Home extends CI_Controller
             $email_pengajar = $this->db->query("SELECT email_pengajar FROM kelas WHERE id='" . $kode_kelas . "'")->result_array();
             $email_mentor = $email_pengajar[0]['email_pengajar'];
 
-
             $data['data_pengumuman'] = $this->db->get_where('pengumuman', ['id_kelas' => $kode_kelas])->result_array();
             $data['data_kelas'] = $this->db->get_where('kelas', ['id' => $kode_kelas])->result_array();
             $data['data_absen'] = $this->db->get_where('absen', ['id_mahasiswa' => $id_mahasiswa])->result_array();
             $data['data_mentor'] =  $this->db->query("SELECT name FROM user WHERE email='" . $email_mentor . "'")->result_array();
+            /*-------------------------------------------------------------*/
         }
 
 
@@ -265,10 +201,12 @@ class Home extends CI_Controller
 
     public function cariKelas()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $kode_kelas = $this->input->post('kode_kelas', true);
         $kelas = $this->db->get_where('kelas', ['kode_kelas' => $kode_kelas])->result_array();
+        /*-------------------------------------------------------------*/
 
         if (!$kelas) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelas yang anda cari tidak ada harap cek kembali kode kelas yang anda cari</div>');
@@ -288,10 +226,13 @@ class Home extends CI_Controller
     }
     public function daftarKelas()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['mahasiswa'] = $this->db->get_where('mahasiswa', ['email' => $this->session->userdata('email')])->row_array();
         $id_mhs = $this->db->query("SELECT id FROM mahasiswa WHERE email='" . $email . "'")->result_array();
         $id_mahasiswa = $id_mhs[0]['id'];
+        /*-------------------------------------------------------------*/
+
         $this->Pelajar_model->daftarKelas($id_mahasiswa);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Masuk Kelas</div>');
         redirect('home/evaluasi');
@@ -301,10 +242,13 @@ class Home extends CI_Controller
     /* Materi */
     public function materi()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        /*-------------------------------------------------------------*/
+
         $this->load->view('templates/header/materi_header');
         $this->load->view('home/materi');
         $this->load->view('templates/landing_script');
@@ -312,10 +256,13 @@ class Home extends CI_Controller
 
     public function materiTajwid()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        /*-------------------------------------------------------------*/
+
         $this->load->view('templates/header/materi_header');
         $this->load->view('home/materiTajwid');
         $this->load->view('templates/landing_script');
@@ -323,10 +270,13 @@ class Home extends CI_Controller
 
     public function materiJanaiz()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        /*-------------------------------------------------------------*/
+
         $this->load->view('templates/header/materi_header');
         $this->load->view('home/materiJanaiz');
         $this->load->view('templates/landing_script');
@@ -334,10 +284,13 @@ class Home extends CI_Controller
 
     public function materiWudhu()
     {
+        /*----------Data - data yang di pakai di Halaman ini----------*/
         $email = $this->session->userdata('email');
         $data['kelas'] = $this->db->get_where('kelas', ['email_pengajar' => $email])->result_array();
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        /*-------------------------------------------------------------*/
+
         $this->load->view('templates/header/materi_header');
         $this->load->view('home/materiWudhu');
         $this->load->view('templates/landing_script');

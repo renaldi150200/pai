@@ -19,9 +19,7 @@
         </thead>
         <tbody>
           <?php
-          foreach ($kelas as $class) :
 
-          endforeach;
 
           $i = 1; ?>
           <?php foreach ($absen as $r) : ?>
@@ -68,8 +66,8 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         <form action="<?= base_url('kelompok/hapusAnggota/') ?>" method="post">
-          <input type="text" name="id_mahasiswa" value="<?= $r['id_mahasiswa']; ?>" hidden>
-          <input type="text" name="id_kelas" value="<?= $class['id']; ?>" hidden>
+          <input type="text" name="id_mahasiswa" value="<?= $r['id_mahasiswa']; ?>">
+          <input type="text" name="id_kelas" value="<?= $id_kelas; ?>">
           <button type="submit" class="btn btn-danger">Hapus</button>
         </form>
       </div>
